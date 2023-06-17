@@ -1,9 +1,11 @@
 
 pkgs <- c(
-  "unhcrshiny",
+  "dashboardthemes",
   "devtools",
   "dplyr",
   "lubridate",
+  "ggplot2",
+  "plotly",
   "golem",
   "pins",
   "shiny",

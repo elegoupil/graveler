@@ -4,9 +4,9 @@
 
 ## Overview
 
-{graveler} is a wrapper for the [{golem}](https://engineering-shiny.org/) package built by several intelligent people over at ThinkR. At a high level, {golem} turns your shiny dashboards into a package framework and allows you to build and deploy them almost exactly as you would an R package. This allows for better documentation, testing, robustness, etc. It’s an amazing guide to engineering dashboards, but the concepts themselves can be complex and technical.
+{graveler} is a wrapper for the [{golem}](https://engineering-shiny.org/) package. This fork also includes a specific package to add UNHCR standard look and feel. At a high level, {golem} turns your shiny dashboards into a package framework and allows you to build and deploy them almost exactly as you would an R package. This allows for better documentation, testing, robustness, etc. 
 
-{graveler} abstracts away its technical side and set defaults for your development workflow (and sets up company branding while you are at it). You can make a working dashboard in less than a minute!
+{graveler} abstracts away its technical side and set defaults for your development workflow. You can make a working dashboard in less than a minute!
 
 ## Why Bother?
 
@@ -21,16 +21,16 @@ Additionally, {shiny} itself can be complicated to spin up at times for develope
 You can install the package via devtools:
 
 ```{r}
-devtools::install_github("ghcarlalan/graveler")
+devtools::install_github("edouard-legoupil/graveler")
 ```
 
 And you can see a small example of a dashboard with:
 
 ```{r}
-graveler::geodude_example()
+graveler::unhcr_example()
 ```
 
-The file structure for geodude is located in the examples/ folder.
+The file structure for unhcr_example is located in the examples/ folder.
 
 <img src="man/figures/geodude.png" width="551"/>
 
@@ -115,13 +115,11 @@ If you are familiar with building R packages, this file is the equivalent of run
 
 ### 02_deploy
 
-This wrapper was built with RStudio Connect integration as the main method of publishing. As such, you might not need this file specifically, as all it does by default is allow you to programmatically set environment variables for Rstudio API keys so dashboards can connect to pinned datasets. I suppose the filename is a misnomer since it does not actually deploy code to rsconnect (that comes later), but you can easily convert this to suit your needs for publishing.
+This wrapper was built with RStudio Connect integration as the main method of publishing. 
 
 ![](man/figures/02_deploy.png)
 
 ## Customization
-
-Editing {graveler} options is easy as well. Obviously, you can edit colors, naming conventions, etc after the project is created, but if you want to apply standards for everyone, I would recommend forking this repository and creating your own internal version of the package that your developers actually install.
 
 All the custom file parameters can be found in {graveler}'s inst/extdata folder (when you create a {gaveler} project it simply copies everything in this folder}. Colors would be edited in the R/theme.R file and default or custom libraries would be edited in the dev/01_dev.R and R/apex_libraries.R files as examples.
 

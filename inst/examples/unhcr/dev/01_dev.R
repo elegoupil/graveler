@@ -17,6 +17,10 @@ pkgs <- c(
 for (i in pkgs) {
   usethis::use_package(i)
 }
+## Dependencies ----
+## Amend DESCRIPTION with dependencies read from package code parsing
+## install.packages('attachment') # if needed.
+attachment::att_amend_desc()
 
 ## 1.2 add app.R file for publishing (be sure to enter 1 in the console prompt)
 

@@ -6,8 +6,6 @@ app_ui <- function() {
   dashboardPage(
     header(),
     sidebar(),
-    body(
-      
-    )
+    body()
   )
 }

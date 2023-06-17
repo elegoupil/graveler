@@ -3,4 +3,5 @@
 export(geodude_example)
 export(graveler_dashboard)
 export(level_up)
+export(unhcr_example)
 importFrom(shiny,shinyAppDir)

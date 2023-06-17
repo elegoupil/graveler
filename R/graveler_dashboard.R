@@ -35,15 +35,15 @@ graveler_dashboard <- function(path,...) {
 
   writeLines(contents, con = file.path(path, "DESCRIPTION"))
 
-  url <- "https://www.rstudio.com/products/connect/"
+  url <- "https://rstudio.unhcr.org/"
 
   header <- c(
     "header <- function() {",
     "\tdashboardHeader(",
     "\t\ttitle = tagList(",
-    paste0("\t\t\tspan(class = 'logo-lg',a(\"", text_list$title, "\",style=\"color:white !important\",href='", url, "')),"),
-    paste0("\t\t\ta(style = \"margin: -15px\", href='", url ,"', img(src = \"www/graveler_sprite.svg\", width=\"225%\"))"),
-    "\t\t),",
+    paste0("\t\t\tspan(class = 'logo-lg',a(\"", text_list$title, "\",style=\"color:white !important\",href='", url, "')),") ,
+    #paste0("\t\t\ta(style = \"margin: -15px\", href='", url ,"', img(src = \"www/graveler_sprite.svg\", width=\"225%\"))"),
+    #"\t\t),",
     "\t\tcontrolbarIcon = \"gear\"",
     "\t)",
     "}"

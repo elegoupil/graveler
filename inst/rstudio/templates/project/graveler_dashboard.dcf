@@ -1,7 +1,7 @@
 Binding: graveler_dashboard
-Title: Make a Graveler Dashboard
+Title: Make a UNHCR Shiny Dashboard
 OpenFiles: dev/01_dev.R, dev/run_dev.R, dev/02_deploy.R
-Icon: graveler_sprite.png
+Icon: unhcr_sprite.png
 
 Parameter: pkg_name
 Widget: TextInput
@@ -11,11 +11,11 @@ Default: gravelerDash
 Parameter: username
 Widget: TextInput
 Label: Username
-Default: jsmith
+Default: edouard
 Position: left
 
 Parameter: title
 Widget: TextInput
 Label: Display Title
-Default: Graveler Dashboard
+Default: UNHCR Dashboard
 Position: right
