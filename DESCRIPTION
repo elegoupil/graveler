@@ -2,19 +2,22 @@ Package: graveler
 Title: Builds standardized, modular shiny dashboard frameworks
 Version: 0.75.1
 Author: acarlson <acarlson@snapfinance.com> [aut, cre]
-Description: Wrapper for {golem} that automates dashboard file generation.
+Maintainer: Edouard Legoupil <legoupil@unhcr.org>
+Description: Wrapper for {golem} that automates dashboard file generation. 
 License: MIT + file LICENSE
-URL: https://github.com/ghcarlalan/graveler
-Encoding: UTF-8
-LazyData: true
-RoxygenNote: 7.2.3
+URL: https://github.com/edouard-legoupil/graveler
 Imports:
     cli,
     glue,
     golem (>= 0.3.1),
-    shinydashboardPlus (>= 0.7.5)
     rstudioapi,
     shiny,
+    shinydashboard,
+    shinydashboardPlus (>= 0.7.5),
     yesno
 Remotes: 
-    edouard-legoupil/unhcrshiny
+    edouard-legoupil/unhcrshiny,
+    vidonne/unhcrthemes
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.2.3 

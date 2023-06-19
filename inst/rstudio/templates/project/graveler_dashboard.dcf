@@ -1,17 +1,17 @@
 Binding: graveler_dashboard
-Title: Make a UNHCR Shiny Dashboard
+Title: a UNHCR Shiny Dashboard
 OpenFiles: dev/01_dev.R, dev/run_dev.R, dev/02_deploy.R
 Icon: unhcr_sprite.png
 
 Parameter: pkg_name
 Widget: TextInput
 Label: Pkg Name
-Default: gravelerDash
+Default: UnhcrShinyDashboard
 
 Parameter: username
 Widget: TextInput
 Label: Username
-Default: edouard
+Default: myName
 Position: left
 
 Parameter: title

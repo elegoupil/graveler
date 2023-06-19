@@ -1,40 +1,76 @@
-# graveler
+# {graveler}
 
-> Build standardized, modular dashboards in {shiny}
+> Build standardized, branded, modular dashboards in {shiny}
 
 ## Overview
 
-{graveler} is a wrapper for the [{golem}](https://engineering-shiny.org/) package. This fork also includes a specific package to add UNHCR standard look and feel. At a high level, {golem} turns your shiny dashboards into a package framework and allows you to build and deploy them almost exactly as you would an R package. This allows for better documentation, testing, robustness, etc. 
+This [{graveler} fork](https://github.com/ghcarlalan/graveler) is a wrapper for [{golem}](https://engineering-shiny.org/), [{shinyDashboard}](https://rstudio.github.io/shinydashboard/index.html) and [{unhcrshiny}](https://edouard-legoupil.github.io/unhcrshiny/) packages. 
 
-{graveler} abstracts away its technical side and set defaults for your development workflow. You can make a working dashboard in less than a minute!
+At a high level, {golem} turns your shiny dashboards into a package framework and allows you to build and deploy them almost exactly as you would an R package. This allows for better documentation, testing, robustness, etc. {graveler} abstracts away its technical side and set defaults for your development workflow.
 
-## Why Bother?
+You shall be able to make a working dashboard in less than a minute!
 
-As any development team grows larger, it is important to standardize code to avoid the dreaded event in which you are handed a project that is coded so differently from your usual workflow that you either have to spend hours refactoring and / or rebuilding from scratch.
+## Dashboard in Shiny
 
-Additionally, {shiny} itself can be complicated to spin up at times for developers who are not familiar with its syntax. {graveler} allows you to create a standard, scalable {shiny} framework so you can focus on actual dashboard element creation instead of spending time getting the various backend pieces to talk to each other.
 
-> Note that this package is not like {shinyWidgets} or other shiny element packages. This is a dashboard skeleton creator that allows you and your team to all start from the same page (some might say fluidPage) so your dashboards all have the same feel, layout, and backend creation.
+Developing dashboards in shiny, rather than with a _"point and click"_  software, requires some familiarity with R programming but also comes with numerous advantages: 
+
+ *  __Customizability__: Shiny offers a high level of flexibility and customization, allowing you to design interactive dashboards with tailored visualizations, layouts, and user interfaces. This comes also with amazing plotting capacity leveraging [ggplot2]()
+ 
+ *  __Seamless Integration with R__: Shiny allows you to leverage the power and flexibility of the R language and its extensive ecosystem of packages for data analysis, visualization, and statistical modeling.
+
+  *  __Responsiveness on mobile devices__: Shiny Dashbaord are built per default with bootstrap, allowing for User Interface Responsiveness.
+ 
+ *  __Advanced Analytics__: With R's extensive statistical capabilities, Shiny enables the integration of complex statistical models and advanced analytics directly into your dashboard.
+ 
+ *  __Reproducibility and Transparency__: Since Shiny dashboards are built using R code, they are inherently reproducible and transparent, making it easier to share and validate analysis methods and results.
+ 
+  *  __Publication__: UNHCR has already invested in a [Rstudio Connect server](http://rstudio.unhr.org) infrastructure.
+ 
+ *  __Open-Source Community__: Shiny benefits from a large and active open-source community, which provides a wealth of resources, packages, and support.
+
+
+## Why Bother with {graveler}?
+
+As any development team grows larger, it is important to standardize code to avoid the dreaded event in which you are handed a project that is coded so differently from your usual workflow that you either have to spend hours refactoring and / or rebuilding from scratch. Additionally, {shiny} itself can be complicated to spin up at times for developers who are not familiar with its syntax. 
+
+__{graveler} allows you to create standard, scalable and documented code so you can focus on actual dashboard element creation instead of spending time getting the various back-end pieces to talk to each other.__
+
+> Note that this package is not like {shinyWidgets} or other shiny element packages. This is a __dashboard skeleton creator__ that allows you and your team to all start from the same page (some might say fluidPage) so your dashboards all have the same feel, layout, and backend creation.
 
 ## Installation
 
 You can install the package via devtools:
 
-```{r}
+```
 devtools::install_github("edouard-legoupil/graveler")
 ```
 
-And you can see a small example of a dashboard with:
+You can see check two typical examples of dashboard below:
 
-```{r}
-graveler::unhcr_example()
 ```
-
-The file structure for unhcr_example is located in the examples/ folder.
+## A dummy example with a dashboard to publish some survey content
+graveler::_example_unhcr_survey()
+```
 
 <img src="man/figures/geodude.png" width="551"/>
 
-## Creation
+```
+## A dummy example with a dashboard to publish who's doing what whwre
+graveler::_example_unhcr_ativity()
+```
+
+<img src="man/figures/geodude.png" width="551"/>
+
+
+The file structure is located in the examples/ folder.
+
+
+## Get Started
+
+Once the package is installed on your Rstudio, follow the steps below:
+
+### Creation
 
 To create a {graveler} dashboard:
 
@@ -54,24 +90,19 @@ To create a {graveler} dashboard:
 
 This will make a new directory on your machine with the following structure:
 
-```{r}
-  "
-  $./dashboard/
+```
    .
    ├── .Rbuildignore # ignores systems files not needed for builds
    ├── DESCRIPTION # where libraries are installed for your package
    ├── dev/
    │   ├── 01_dev.R # package dependencies and system file creations
-   │   ├── run_dev.R # build, document, and run the shiny dashboard
-   │   └── 02_deploy.R # rstudio connect integration functions
+   │   └──  run_dev.R # build, document, and run the shiny dashboard
    ├── foo.Rproj
    ├── inst/
    │   └── app/
-   │       ├── www/ # standard shiny extra file subfolder
-   │       |   ├── favicon.ico # golem favicon
-   │       |   └── graveler_sprite.svg # icon in upper left of collapsed header
-   |       └── runners/ # scheduled reports and pin integration
-   │           └── example_runner.Rmd
+   │       └── www/ # standard shiny extra file subfolder
+   │           ├── favicon.ico # unhcr favicon
+   │           └── unhcr_sprite.svg # icon in upper left of collapsed header
    ├── man/ # .Rd system files for functions generated by R
    └── R/
        ├── apex_libraries.R # necessary libraries your dashboard loads
@@ -80,16 +111,14 @@ This will make a new directory on your machine with the following structure:
        ├── body.R # organizes UI layouts
        ├── golem_add_external_resources.R # allows usage of www/ folder
        ├── header.R # display name and other shinydashboardPlus features
-       ├── sidebar.R # tabs and their icons
-       └── theme.R # system file to format dashboards with branding
-  "
+       └── sidebar.R # tabs and their icons
 ```
 
-## Initialization
+### Initialization
 
-When you load up the new project, you will have three files open: `01_dev.R`, `run_dev`, and `02_dev.R`.
+When you load up the new project, you will have two files open: `01_dev.R` and `run_dev`.
 
-### 01_dev
+#### 01_dev
 
 The first file sets up the dependencies for deployment. If you check the `DESCRIPTION` file, it will have no imports on initialization. When you run this file, it attaches all of your libraries to the package so that the server you publish to can know what to install and run.
 
@@ -101,7 +130,7 @@ At the end of the file, you will navigate to the run_dev.R file.
 
 ![](man/figures/01_dev.png)
 
-### run_dev
+#### run_dev
 
 Once your dependencies and system files are in place, you can run all code in the `run_dev.R` file. This should successfully run and load your (currently empty) shiny dashboard! In the span of a minute you have already made a reproducible and fully functional framework!
 
@@ -113,30 +142,27 @@ If you are familiar with building R packages, this file is the equivalent of run
 
 ![](man/figures/run_dev.png)
 
-### 02_deploy
 
-This wrapper was built with RStudio Connect integration as the main method of publishing. 
 
-![](man/figures/02_deploy.png)
+### Customization
 
-## Customization
+Additional or custom libraries would be edited in the dev/01_dev.R and R/apex_libraries.R files as examples.
 
-All the custom file parameters can be found in {graveler}'s inst/extdata folder (when you create a {gaveler} project it simply copies everything in this folder}. Colors would be edited in the R/theme.R file and default or custom libraries would be edited in the dev/01_dev.R and R/apex_libraries.R files as examples.
+The implementation of the brand within your plots should be done with [unhcrthemes](https://vidonne.github.io/unhcrthemes/). 
 
-## Modularization
+
+### Modularization
 
 If you are unfamiliar, modularization splits your dashboard into *n* files where *n* is the number of sidebar tabs / modules you want to make that each have their own UI and server namespaces. This allows you to independently load each module's code (if one breaks, the rest will still work) and reuse IDs for UI elements (you can give different plotOuputs a generic name like "chart" across two different modules).
 
-### Creation
+#### Creation
 
 When inside a `{graveler}` project, running the function `level_up(name = "foo")` will add a module to your dashboard as well as a "fct" file, which is how {golem} [suggests you functionalize your code](https://engineering-shiny.org/build-app-golem.html?q=fct#submodules-and-utility-functions):
 
-```{r}
-  "
-  $./dashboard/
+```
    .
    ├── R/
-   │   ├── 1 libraries.R
+   │   ├── apex_libraries.R
    │   ├── app_config.R
    │   ├── app_server.R
    │   ├── app_ui.R
@@ -146,8 +172,7 @@ When inside a `{graveler}` project, running the function `level_up(name = "foo")
    │   ├── mod_foo.R                    <<<<< HERE
    │   ├── mod_foo_fct_display.R        <<<<< HERE
    │   ├── run_app.R
-   │   ├── sidebar.R
-   │   └── snap_dashboard.R
+   │   └── sidebar.R
    ├── man/
    ├── inst/
    ├── dev/
@@ -155,18 +180,17 @@ When inside a `{graveler}` project, running the function `level_up(name = "foo")
    ├── foo.Rproj
    ├── .Rbuildignore
    └── NAMESPACE
-  "
 ```
 
 ![](man/figures/blank_mod.png)
 
-You place your UI and server code in the `mod` file, and then you abstract away repeatable data manipulation or plotting functions inside the `fct` file. You can see this in the `geodude` example dashboard files:
+You place your UI and server code in the `mod` file, and then you abstract away repeatable data manipulation or plotting functions inside the `fct` file. You can see this in the `unhcrboard` example dashboard files:
 
 ![](man/figures/fct_display.png)
 
 In general, this helps keep your module code short and tidy, and allows you to put documentation for your functions just like a package.
 
-### Connection
+#### Connection
 
 `level_up` might create your module, but you still need to tell your dashboard to include and run this module. To do so, there are three lines at the bottom you copy and paste into their appropriate files: body.R, app_server.R, and sidebar.R (uncommentted, of course).
 
@@ -178,16 +202,26 @@ Once that is done, your modules should appear on the left. All that is left to d
 
 ## Deployment
 
+Once the `run_dev.R` file runs and your dashboard is error free, you can go for deployment. 
 Here are some examples of RStudio integration publishing. This assumes you have your server set up and your Rstudio Connect account linked to your RStudio IDE.
 
 ### Publish via Button
 
-Once the run_dev.R file runs and your dashboard is error free, you can simply click the blue, publish button in the top right. It will gather your dependencies, ensure the server has them installed, and then your dashboard will be viewable on RStudio Connect.
+
+In order to deploy your application, the basic file have been created. 
+
+Run the `app.R` file to launch your application locally and then click on the blue: "`publish button`"" in the top right.
+![](man/figures/deploy.png)
+
+ It will gather your dependencies, ensure the server has them installed, and then your dashboard will be viewable on RStudio Connect.
+[More info on deployement here](https://data-viz.it.wisc.edu/__docs__/admin/appendix/deployment-guide/)
 
 ### Publish via Github
 
-While more involved then simply clicking a button, git backed content will ensure your published works will align with your team's codebase and allow others to collaborate easier. Earlier, we made a manifest.json file at the end of the 01_dev.R file. This creates an "image" that RStudio looks for and reproduces from github directly.
+While more involved then simply clicking a button, git backed content will ensure your published works will align with your team's codebase and allow others to collaborate easier. Earlier, we made a `manifest.json` file at the end of the `01_dev.R` file. This creates an "image" that RStudio looks for and reproduces from github directly.
 
 To publish for the first time, you push your code to whichever repo and branch on github, then in RStudio Connect you click its blue, publish button. You then navigate to the repo and branch you just pushed to, find the manifest file. Just like before, it will gather your dependencies from the manifest, ensure the server has them installed, and then your dashboard will be viewable on RStudio Connect.
 
 To republish changes in the future, you simply merge your code to github and the file will automatically reflect those changes when it sees them.
+
+### Register our dashbaord on 

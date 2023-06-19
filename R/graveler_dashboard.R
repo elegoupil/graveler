@@ -44,8 +44,8 @@ graveler_dashboard <- function(path,...) {
     paste0("\t\t\tspan(class = 'logo-lg',a(\"", text_list$title, "\",style=\"color:white !important\",href='", url, "')),") ,
     #paste0("\t\t\ta(style = \"margin: -15px\", href='", url ,"', img(src = \"www/graveler_sprite.svg\", width=\"225%\"))"),
     #"\t\t),",
-    "\t\tcontrolbarIcon = \"gear\"",
-    "\t)",
+    #"\t\tcontrolbarIcon = \"gear\"",
+    "\t) )",
     "}"
   )
 
