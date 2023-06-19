@@ -15,11 +15,11 @@ You shall be able to make a working dashboard in less than a minute!
 
 Developing dashboards in shiny, rather than with a _"point and click"_  software, requires some familiarity with R programming but also comes with numerous advantages: 
 
- *  __Customizability__: Shiny offers a high level of flexibility and customization, allowing you to design interactive dashboards with tailored visualizations, layouts, and user interfaces. This comes also with amazing plotting capacity leveraging [ggplot2]()
+ *  __Customizability__: Shiny offers a high level of flexibility and customization, allowing you to design interactive dashboards with tailored visualizations, layouts, and user interfaces (including for the instance [humanitarian icons](https://fontawesome.com/icons/categories/humanitarian)). This comes also with amazing plotting capacity leveraging [ggplot2](https://ggplot2.tidyverse.org/)
  
  *  __Seamless Integration with R__: Shiny allows you to leverage the power and flexibility of the R language and its extensive ecosystem of packages for data analysis, visualization, and statistical modeling.
 
-  *  __Responsiveness on mobile devices__: Shiny Dashbaord are built per default with bootstrap, allowing for User Interface Responsiveness.
+  *  __Responsiveness on mobile devices__: Shiny Dashboard are built per default with bootstrap, allowing for User Interface Responsiveness, meaning the resulting product will be legible on smartphones for senior managers in a hurry.
  
  *  __Advanced Analytics__: With R's extensive statistical capabilities, Shiny enables the integration of complex statistical models and advanced analytics directly into your dashboard.
  
@@ -46,7 +46,27 @@ You can install the package via devtools:
 devtools::install_github("edouard-legoupil/graveler")
 ```
 
-You can see check two typical examples of dashboard below:
+You can see check typical examples of dashboard. As a _rule of thumb_, a good dashboard should remain simple to be effective (aka not more than 7 charts, and not more than 7 categories by charts). 
+
+To help in the design process, the package includes examples of typical charts that can be assembled together both for Response and Protection Monitoring.
+
+##### Example 1: Protection Monitoring
+
+Typically the content of a Protection Monitoring Dashboard allows to quickly identify the situation of basic rights in order to pilot the activities on the ground. It would include: 
+
+ 1.  __Exposure: Vulnerable Populations:__ Treemap displaying the percentage or distribution of different vulnerable populations (e.g., children, women, elderly, disabled) affected by protection concerns. 
+
+ 2.  __Thread: Incident Types and Frequency:__ Line chart illustrating the trend in the frequency of of different types of protection incidents (e.g., violence, exploitation, discrimination) over time, allowing for identification of spikes or patterns.
+
+ 3.  __Coping: Response Coverage:__ Donut chart showcasing the coverage and reach of protection interventions by different implementing organizations or sectors.
+
+ 4.  __Compliance with Protection Standards:__ Radar chart comparing the adherence to different protection standards (e.g., human rights principles, international humanitarian law) by various implementing actors or sectors.
+
+ 5.  __Protection Advocacy Challenges: __  Gantt chart depicting the timeline of identified advocacy and the status of efforts to address them, allowing for tracking progress and resolution.
+
+ 6.  __Key Performance Indicators (KPIs):__  Highlighted numbers specific KPIs related to the protection response (e.g., number of cases resolved, number of survivors accessing support services). 
+
+ 7.  __Geographic Distribution:__    Choropleth map presenting the spatial distribution of protection incidents, vulnerability, or response activities, allowing for visual identification of hotspots or areas in need.
 
 ```
 ## A dummy example with a dashboard to publish some survey content
@@ -55,8 +75,28 @@ graveler::_example_unhcr_survey()
 
 <img src="man/figures/geodude.png" width="551"/>
 
+##### Example 2: Response Monitoring
+
+
+Typically the content of a Response Monitoring Dashboard allows to ensure that the right activities are done right. It would typically include: 
+
+ 1.  __Needs Assessment and Population:__  Population pyramid illustrating the demographic composition of the affected population (e.g., age, gender) including specific needs to inform targeted response planning.
+
+ 2.  __Resources Allocation:__ Heatmap representing the  allocation of resources (e.g., funding, personnel, supplies) by response activities, allowing for visual identification of areas with high or low response coverage.
+
+ 3.  __Key Performance Indicators (KPIs):__ Gauge chart indicating the achievement of predetermined targets or benchmarks for the response activities.
+
+ 4.  __Funding Management:__  Staked Bar chart comparing the planned versus actual resource allocations to identify discrepancies or gaps in resource management.
+
+ 5.  __Coordination and Partnership:__  Sankey diagram showing the collaboration and partnerships among different response organizations or clusters, measuring the frequency of coordination meetings or joint planning efforts
+
+ 6.  __Impact and Outcome:__  Bubble chart showcasing the correlation between response interventions and key outcomes or impact indicators (e.g., improved health indicators, increased access to education).
+
+ 7.  __Alert:__   Area chart providing real-time updates on key indicators, allowing for immediate identification of emerging trends or shifts in the humanitarian situation (for instance average assistance enrollment processing time).
+ 
+
 ```
-## A dummy example with a dashboard to publish who's doing what whwre
+## A dummy example with a dashboard to publish who's doing what whewre
 graveler::_example_unhcr_ativity()
 ```
 
@@ -224,4 +264,6 @@ To publish for the first time, you push your code to whichever repo and branch o
 
 To republish changes in the future, you simply merge your code to github and the file will automatically reflect those changes when it sees them.
 
-### Register our dashbaord on 
+### Register your dashbaord!
+
+On UNHCR Data Portal: [https://data.unhcr.org/en/dataviz](https://data.unhcr.org/en/dataviz)
