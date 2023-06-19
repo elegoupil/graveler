@@ -6,16 +6,16 @@
 
 This [{graveler} fork](https://github.com/ghcarlalan/graveler) is a wrapper for [{golem}](https://engineering-shiny.org/), [{shinyDashboard}](https://rstudio.github.io/shinydashboard/index.html) and [{unhcrshiny}](https://edouard-legoupil.github.io/unhcrshiny/) packages. 
 
-At a high level, {golem} turns your shiny dashboards into a package framework and allows you to build and deploy them almost exactly as you would an R package. This allows for better documentation, testing, robustness, etc. {graveler} abstracts away its technical side and set defaults for your development workflow.
+At a high level, {golem} turns your shiny dashboards into a package framework and allows you to build and deploy them almost exactly as you would for an R package. This allows for better documentation, testing, robustness, etc. {graveler} abstracts away its technical side and set defaults for the development workflow of UNHCR dashboards.
 
-You shall be able to make a working dashboard in less than a minute!
+You shall then be able to make a working dashboard in a few minutes!
 
 ## Dashboard in Shiny
 
 
 Developing dashboards in shiny, rather than with a _"point and click"_  software, requires some familiarity with R programming but also comes with numerous advantages: 
 
- *  __Customizability__: Shiny offers a high level of flexibility and customization, allowing you to design interactive dashboards with tailored visualizations, layouts, and user interfaces (including for the instance [humanitarian icons](https://fontawesome.com/icons/categories/humanitarian)). This comes also with amazing plotting capacity leveraging [ggplot2](https://ggplot2.tidyverse.org/)
+ *  __Customizability within standards__: Shiny offers a high level of flexibility and customization, allowing you to design interactive dashboards with tailored visualizations, layouts, and user interfaces (including for the instance [humanitarian icons](https://fontawesome.com/icons/categories/humanitarian)). This comes also with amazing plotting capacity leveraging [ggplot2](https://ggplot2.tidyverse.org/). At the same time, as soon as the standard css (with [{unhcrshiny}](https://edouard-legoupil.github.io/unhcrshiny/)) is used, the look and feel will remain fully consistent.
  
  *  __Seamless Integration with R__: Shiny allows you to leverage the power and flexibility of the R language and its extensive ecosystem of packages for data analysis, visualization, and statistical modeling.
 
@@ -48,11 +48,11 @@ devtools::install_github("edouard-legoupil/graveler")
 
 You can see check typical examples of dashboard. As a _rule of thumb_, a good dashboard should remain simple to be effective (aka not more than 7 charts, and not more than 7 categories by charts). 
 
-To help in the design process, the package includes examples of typical charts that can be assembled together both for Response and Protection Monitoring.
+To help in the design process, the package includes examples of typical charts that can be assembled together both for Response and Protection Monitoring. The file structure is located in the [examples folder](https://github.com/Edouard-Legoupil/graveler/tree/main/inst/examples).
 
 ##### Example 1: Protection Monitoring
 
-Typically the content of a Protection Monitoring Dashboard allows to quickly identify the situation of basic rights in order to pilot the activities on the ground. It would include: 
+Typically the content of a Protection Monitoring Dashboard allows to quickly identify the situation of basic rights in order to pilot the activities on the ground. It should complement (_and not replace!_) an in-depth protection analysis based on the protection risk equation. It would include: 
 
  1.  __Exposure: Vulnerable Populations:__ Treemap displaying the percentage or distribution of different vulnerable populations (e.g., children, women, elderly, disabled) affected by protection concerns. 
 
@@ -62,15 +62,14 @@ Typically the content of a Protection Monitoring Dashboard allows to quickly ide
 
  4.  __Compliance with Protection Standards:__ Radar chart comparing the adherence to different protection standards (e.g., human rights principles, international humanitarian law) by various implementing actors or sectors.
 
- 5.  __Protection Advocacy Challenges: __  Gantt chart depicting the timeline of identified advocacy and the status of efforts to address them, allowing for tracking progress and resolution.
+ 5.  __Protection Advocacy Challenges:__ Gantt chart depicting the timeline of identified advocacy and the status of efforts to address them, allowing for tracking progress and resolution.
 
  6.  __Key Performance Indicators (KPIs):__  Highlighted numbers specific KPIs related to the protection response (e.g., number of cases resolved, number of survivors accessing support services). 
 
  7.  __Geographic Distribution:__    Choropleth map presenting the spatial distribution of protection incidents, vulnerability, or response activities, allowing for visual identification of hotspots or areas in need.
 
 ```
-## A dummy example with a dashboard to publish some survey content
-graveler::_example_unhcr_survey()
+graveler::_example_protection()
 ```
 
 <img src="man/figures/geodude.png" width="551"/>
@@ -96,14 +95,12 @@ Typically the content of a Response Monitoring Dashboard allows to ensure that t
  
 
 ```
-## A dummy example with a dashboard to publish who's doing what whewre
-graveler::_example_unhcr_ativity()
+graveler::_example_response()
 ```
 
 <img src="man/figures/geodude.png" width="551"/>
 
 
-The file structure is located in the examples/ folder.
 
 
 ## Get Started

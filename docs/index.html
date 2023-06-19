@@ -69,15 +69,15 @@
 <h2 id="overview">Overview<a class="anchor" aria-label="anchor" href="#overview"></a>
 </h2>
 <p>This <a href="https://github.com/ghcarlalan/graveler" class="external-link">{graveler} fork</a> is a wrapper for <a href="https://engineering-shiny.org/" class="external-link">{golem}</a>, <a href="https://rstudio.github.io/shinydashboard/index.html" class="external-link">{shinyDashboard}</a> and <a href="https://edouard-legoupil.github.io/unhcrshiny/" class="external-link">{unhcrshiny}</a> packages.</p>
-<p>At a high level, {golem} turns your shiny dashboards into a package framework and allows you to build and deploy them almost exactly as you would an R package. This allows for better documentation, testing, robustness, etc. {graveler} abstracts away its technical side and set defaults for your development workflow.</p>
-<p>You shall be able to make a working dashboard in less than a minute!</p>
+<p>At a high level, {golem} turns your shiny dashboards into a package framework and allows you to build and deploy them almost exactly as you would for an R package. This allows for better documentation, testing, robustness, etc. {graveler} abstracts away its technical side and set defaults for the development workflow of UNHCR dashboards.</p>
+<p>You shall then be able to make a working dashboard in a few minutes!</p>
 </div>
 <div class="section level2">
 <h2 id="dashboard-in-shiny">Dashboard in Shiny<a class="anchor" aria-label="anchor" href="#dashboard-in-shiny"></a>
 </h2>
 <p>Developing dashboards in shiny, rather than with a <em>“point and click”</em> software, requires some familiarity with R programming but also comes with numerous advantages:</p>
 <ul>
-<li><p><strong>Customizability</strong>: Shiny offers a high level of flexibility and customization, allowing you to design interactive dashboards with tailored visualizations, layouts, and user interfaces (including for the instance <a href="https://fontawesome.com/icons/categories/humanitarian" class="external-link">humanitarian icons</a>). This comes also with amazing plotting capacity leveraging <a href="https://ggplot2.tidyverse.org/" class="external-link">ggplot2</a></p></li>
+<li><p><strong>Customizability within standards</strong>: Shiny offers a high level of flexibility and customization, allowing you to design interactive dashboards with tailored visualizations, layouts, and user interfaces (including for the instance <a href="https://fontawesome.com/icons/categories/humanitarian" class="external-link">humanitarian icons</a>). This comes also with amazing plotting capacity leveraging <a href="https://ggplot2.tidyverse.org/" class="external-link">ggplot2</a>. At the same time, as soon as the standard css (with <a href="https://edouard-legoupil.github.io/unhcrshiny/" class="external-link">{unhcrshiny}</a>) is used, the look and feel will remain fully consistent.</p></li>
 <li><p><strong>Seamless Integration with R</strong>: Shiny allows you to leverage the power and flexibility of the R language and its extensive ecosystem of packages for data analysis, visualization, and statistical modeling.</p></li>
 <li><p><strong>Responsiveness on mobile devices</strong>: Shiny Dashboard are built per default with bootstrap, allowing for User Interface Responsiveness, meaning the resulting product will be legible on smartphones for senior managers in a hurry.</p></li>
 <li><p><strong>Advanced Analytics</strong>: With R’s extensive statistical capabilities, Shiny enables the integration of complex statistical models and advanced analytics directly into your dashboard.</p></li>
@@ -101,22 +101,21 @@
 <p>You can install the package via devtools:</p>
 <pre><code><span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"edouard-legoupil/graveler"</span><span class="op">)</span></span></code></pre>
 <p>You can see check typical examples of dashboard. As a <em>rule of thumb</em>, a good dashboard should remain simple to be effective (aka not more than 7 charts, and not more than 7 categories by charts).</p>
-<p>To help in the design process, the package includes examples of typical charts that can be assembled together both for Response and Protection Monitoring.</p>
+<p>To help in the design process, the package includes examples of typical charts that can be assembled together both for Response and Protection Monitoring. The file structure is located in the <a href="https://github.com/Edouard-Legoupil/graveler/tree/main/inst/examples" class="external-link">examples folder</a>.</p>
 <div class="section level5">
 <h5 id="example-1-protection-monitoring">Example 1: Protection Monitoring<a class="anchor" aria-label="anchor" href="#example-1-protection-monitoring"></a>
 </h5>
-<p>Typically the content of a Protection Monitoring Dashboard allows to quickly identify the situation of basic rights in order to pilot the activities on the ground. It would include:</p>
+<p>Typically the content of a Protection Monitoring Dashboard allows to quickly identify the situation of basic rights in order to pilot the activities on the ground. It should complement (<em>and not replace!</em>) an in-depth protection analysis based on the protection risk equation. It would include:</p>
 <ol style="list-style-type: decimal">
 <li><p><strong>Exposure: Vulnerable Populations:</strong> Treemap displaying the percentage or distribution of different vulnerable populations (e.g., children, women, elderly, disabled) affected by protection concerns.</p></li>
 <li><p><strong>Thread: Incident Types and Frequency:</strong> Line chart illustrating the trend in the frequency of of different types of protection incidents (e.g., violence, exploitation, discrimination) over time, allowing for identification of spikes or patterns.</p></li>
 <li><p><strong>Coping: Response Coverage:</strong> Donut chart showcasing the coverage and reach of protection interventions by different implementing organizations or sectors.</p></li>
 <li><p><strong>Compliance with Protection Standards:</strong> Radar chart comparing the adherence to different protection standards (e.g., human rights principles, international humanitarian law) by various implementing actors or sectors.</p></li>
-<li><p><strong>Protection Advocacy Challenges: </strong> Gantt chart depicting the timeline of identified advocacy and the status of efforts to address them, allowing for tracking progress and resolution.</p></li>
+<li><p><strong>Protection Advocacy Challenges:</strong> Gantt chart depicting the timeline of identified advocacy and the status of efforts to address them, allowing for tracking progress and resolution.</p></li>
 <li><p><strong>Key Performance Indicators (KPIs):</strong> Highlighted numbers specific KPIs related to the protection response (e.g., number of cases resolved, number of survivors accessing support services).</p></li>
 <li><p><strong>Geographic Distribution:</strong> Choropleth map presenting the spatial distribution of protection incidents, vulnerability, or response activities, allowing for visual identification of hotspots or areas in need.</p></li>
 </ol>
-<pre><code>## A dummy example with a dashboard to publish some survey content
-graveler::_example_unhcr_survey()</code></pre>
+<pre><code>graveler::_example_protection()</code></pre>
 <p><img src="reference/figures/geodude.png" width="551"></p>
 </div>
 <div class="section level5">
@@ -132,10 +131,8 @@ graveler::_example_unhcr_survey()</code></pre>
 <li><p><strong>Impact and Outcome:</strong> Bubble chart showcasing the correlation between response interventions and key outcomes or impact indicators (e.g., improved health indicators, increased access to education).</p></li>
 <li><p><strong>Alert:</strong> Area chart providing real-time updates on key indicators, allowing for immediate identification of emerging trends or shifts in the humanitarian situation (for instance average assistance enrollment processing time).</p></li>
 </ol>
-<pre><code>## A dummy example with a dashboard to publish who's doing what whewre
-graveler::_example_unhcr_ativity()</code></pre>
+<pre><code>graveler::_example_response()</code></pre>
 <p><img src="reference/figures/geodude.png" width="551"></p>
-<p>The file structure is located in the examples/ folder.</p>
 </div>
 </div>
 <div class="section level2">
