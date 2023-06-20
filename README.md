@@ -4,7 +4,7 @@
 
 ## Overview
 
-This [{graveler} fork](https://github.com/ghcarlalan/graveler) is a wrapper for [{golem}](https://engineering-shiny.org/), [{shinyDashboard}](https://rstudio.github.io/shinydashboard/index.html) and [{unhcrshiny}](https://edouard-legoupil.github.io/unhcrshiny/) packages. 
+This [{graveler} fork](https://github.com/ghcarlalan/graveler) is an __Rstudio Project template__ and a wrapper for [{golem}](https://engineering-shiny.org/), [{shinyDashboard}](https://rstudio.github.io/shinydashboard/index.html) and [{unhcrshiny}](https://edouard-legoupil.github.io/unhcrshiny/) packages. 
 
 At a high level, {golem} turns your shiny dashboards into a package framework and allows you to build and deploy them almost exactly as you would for an R package. This allows for better documentation, testing, robustness, etc. {graveler} abstracts away its technical side and set defaults for the development workflow of UNHCR dashboards.
 
@@ -54,7 +54,7 @@ To help in the design process, the package includes examples of typical charts t
 
 Typically the content of a Protection Monitoring Dashboard allows to quickly identify the situation of basic rights in order to pilot the activities on the ground. It should complement (_and not replace!_) an in-depth protection analysis based on the protection risk equation. It would include: 
 
- 1.  __Exposure: Vulnerable Populations:__ Treemap displaying the percentage or distribution of different vulnerable populations (e.g., children, women, elderly, disabled) affected by protection concerns. 
+ 1.  __Exposure: Vulnerable Populations:__ Treemap displaying the percentage of different vulnerable populations (e.g., children, women, elderly, disabled) affected by protection concerns. 
 
  2.  __Thread: Incident Types and Frequency:__ Line chart illustrating the trend in the frequency of of different types of protection incidents (e.g., violence, exploitation, discrimination) over time, allowing for identification of spikes or patterns.
 
