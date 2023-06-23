@@ -24,7 +24,7 @@ Developing dashboards in shiny, rather than with a _"point and click"_  software
  
  *  __Reproducibility and Transparency__: Since Shiny dashboards are built using R code, they are inherently reproducible and transparent, making it easier to share and validate analysis methods and results.
  
-  *  __Publication__: UNHCR has already invested in a [Rstudio Connect server](http://rstudio.unhr.org) infrastructure.
+  *  __Publication and Maintenance__: UNHCR has already invested in a [Rstudio Connect server](http://rstudio.unhr.org) infrastructure, which is ready to be leveraged. There are even ways to keep your dashboard behind authentication if need arise. As Shiny Dashboard are based on scripts, there are easier to maintain and monitor over time, as you can keep them under version control in github.
  
  *  __Open-Source Community__: Shiny benefits from a large and active open-source community, which provides a wealth of resources, packages, and support.
 
