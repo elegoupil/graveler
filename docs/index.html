@@ -63,7 +63,7 @@
 <div class="page-header"><h1 id="graveler">{graveler}<a class="anchor" aria-label="anchor" href="#graveler"></a>
 </h1></div>
 <blockquote>
-<p>Build standardized, branded, modular dashboards in {shiny}</p>
+<p>Build standardized, branded, modular dashboards to deploy on <a href="http://rstudio.unhcr.org" class="external-link">UNHCR Rstudio Connect Server</a></p>
 </blockquote>
 <div class="section level2">
 <h2 id="overview">Overview<a class="anchor" aria-label="anchor" href="#overview"></a>
@@ -96,57 +96,25 @@
 </blockquote>
 </div>
 <div class="section level2">
-<h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
-</h2>
-<p>You can install the package via devtools:</p>
-<pre><code><span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"edouard-legoupil/graveler"</span><span class="op">)</span></span></code></pre>
-<p>You can see check typical examples of dashboard. As a <em>rule of thumb</em>, a good dashboard should remain simple to be effective (aka not more than 7 charts, and not more than 7 categories by charts).</p>
-<p>To help in the design process, the package includes examples of typical charts that can be assembled together both for Response and Protection Monitoring. The file structure is located in the <a href="https://github.com/Edouard-Legoupil/graveler/tree/main/inst/examples" class="external-link">examples folder</a>.</p>
-<div class="section level5">
-<h5 id="example-1-protection-monitoring">Example 1: Protection Monitoring<a class="anchor" aria-label="anchor" href="#example-1-protection-monitoring"></a>
-</h5>
-<p>Typically the content of a Protection Monitoring Dashboard allows to quickly identify the situation of basic rights in order to pilot the activities on the ground. It should complement (<em>and not replace!</em>) an in-depth protection analysis based on the protection risk equation. It would include:</p>
-<ol style="list-style-type: decimal">
-<li><p><strong>Exposure: Vulnerable Populations:</strong> Treemap displaying the percentage of different vulnerable populations (e.g., children, women, elderly, disabled) affected by protection concerns.</p></li>
-<li><p><strong>Thread: Incident Types and Frequency:</strong> Line chart illustrating the trend in the frequency of of different types of protection incidents (e.g., violence, exploitation, discrimination) over time, allowing for identification of spikes or patterns.</p></li>
-<li><p><strong>Coping: Response Coverage:</strong> Donut chart showcasing the coverage and reach of protection interventions by different implementing organizations or sectors.</p></li>
-<li><p><strong>Compliance with Protection Standards:</strong> Radar chart comparing the adherence to different protection standards (e.g., human rights principles, international humanitarian law) by various implementing actors or sectors.</p></li>
-<li><p><strong>Protection Advocacy Challenges:</strong> Gantt chart depicting the timeline of identified advocacy and the status of efforts to address them, allowing for tracking progress and resolution.</p></li>
-<li><p><strong>Key Performance Indicators (KPIs):</strong> Highlighted numbers specific KPIs related to the protection response (e.g., number of cases resolved, number of survivors accessing support services).</p></li>
-<li><p><strong>Geographic Distribution:</strong> Choropleth map presenting the spatial distribution of protection incidents, vulnerability, or response activities, allowing for visual identification of hotspots or areas in need.</p></li>
-</ol>
-<pre><code>graveler::_example_protection()</code></pre>
-<p><img src="reference/figures/geodude.png" width="551"></p>
-</div>
-<div class="section level5">
-<h5 id="example-2-response-monitoring">Example 2: Response Monitoring<a class="anchor" aria-label="anchor" href="#example-2-response-monitoring"></a>
-</h5>
-<p>Typically the content of a Response Monitoring Dashboard allows to ensure that the right activities are done right. It would typically include:</p>
-<ol style="list-style-type: decimal">
-<li><p><strong>Needs Assessment and Population:</strong> Population pyramid illustrating the demographic composition of the affected population (e.g., age, gender) including specific needs to inform targeted response planning.</p></li>
-<li><p><strong>Resources Allocation:</strong> Heatmap representing the allocation of resources (e.g., funding, personnel, supplies) by response activities, allowing for visual identification of areas with high or low response coverage.</p></li>
-<li><p><strong>Key Performance Indicators (KPIs):</strong> Gauge chart indicating the achievement of predetermined targets or benchmarks for the response activities.</p></li>
-<li><p><strong>Funding Management:</strong> Staked Bar chart comparing the planned versus actual resource allocations to identify discrepancies or gaps in resource management.</p></li>
-<li><p><strong>Coordination and Partnership:</strong> Sankey diagram showing the collaboration and partnerships among different response organizations or clusters, measuring the frequency of coordination meetings or joint planning efforts</p></li>
-<li><p><strong>Impact and Outcome:</strong> Bubble chart showcasing the correlation between response interventions and key outcomes or impact indicators (e.g., improved health indicators, increased access to education).</p></li>
-<li><p><strong>Alert:</strong> Area chart providing real-time updates on key indicators, allowing for immediate identification of emerging trends or shifts in the humanitarian situation (for instance average assistance enrollment processing time).</p></li>
-</ol>
-<pre><code>graveler::_example_response()</code></pre>
-<p><img src="reference/figures/geodude.png" width="551"></p>
-</div>
-</div>
-<div class="section level2">
 <h2 id="get-started">Get Started<a class="anchor" aria-label="anchor" href="#get-started"></a>
 </h2>
-<p>Once the package is installed on your Rstudio, follow the steps below:</p>
 <div class="section level3">
-<h3 id="creation">Creation<a class="anchor" aria-label="anchor" href="#creation"></a>
+<h3 id="package-installation">Package Installation<a class="anchor" aria-label="anchor" href="#package-installation"></a>
+</h3>
+<p>If you are on windows, you will need to install <a href="https://cran.r-project.org/bin/windows/Rtools/" class="external-link">Rtools</a> on the top of <a href="https://cran.rstudio.com/" class="external-link">R</a> <a href="https://posit.co/download/rstudio-desktop/" class="external-link">Rstudio</a></p>
+<p>Then you can paste the following to install the package:</p>
+<pre><code><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"pak"</span><span class="op">)</span></span>
+<span><span class="fu">pak</span><span class="fu">::</span><span class="fu"><a href="http://pak.r-lib.org/reference/pkg_install.html" class="external-link">pkg_install</a></span><span class="op">(</span><span class="st">"edouard-legoupil/graveler"</span><span class="op">)</span></span></code></pre>
+<p>Once the package is installed on your Rstudio, follow the steps below:</p>
+</div>
+<div class="section level3">
+<h3 id="project-creation">Project Creation<a class="anchor" aria-label="anchor" href="#project-creation"></a>
 </h3>
 <p>To create a {graveler} dashboard:</p>
 <ol style="list-style-type: decimal">
 <li><p>Click <code>New Project</code></p></li>
 <li><p>Select <code>New Directory</code></p></li>
-<li><p>Select <code>UNHCR Dashboard Template</code></p></li>
+<li><p>Select <code>using UNHCR Shiny Dashboard Template</code></p></li>
 </ol>
 <p><img src="reference/figures/wizard1.png" width="389"></p>
 <ol start="4" style="list-style-type: decimal">
@@ -182,7 +150,7 @@
        └── sidebar.R # tabs and their icons - call in modules menu there</code></pre>
 </div>
 <div class="section level3">
-<h3 id="initialization">Initialization<a class="anchor" aria-label="anchor" href="#initialization"></a>
+<h3 id="initialization-of-the-app">Initialization of the app<a class="anchor" aria-label="anchor" href="#initialization-of-the-app"></a>
 </h3>
 <p>When you load up the new project, you will have two files open: <code>01_dev.R</code> and <code>run_dev</code>.</p>
 <div class="section level4">
@@ -214,9 +182,9 @@
 <h3 id="modularization">Modularization<a class="anchor" aria-label="anchor" href="#modularization"></a>
 </h3>
 <p>If you are unfamiliar, modularization splits your dashboard into <em>n</em> files where <em>n</em> is the number of sidebar tabs / modules you want to make that each have their own UI and server namespaces. This allows you to independently load each module’s code (if one breaks, the rest will still work) and reuse IDs for UI elements (you can give different plotOuputs a generic name like “chart” across two different modules).</p>
-<p>By default the template comes with an initial module where the first tab with the home page is included.</p>
+<p>By default the template comes with an initial <code>home</code> module where the first tab with the home page is included.</p>
 <div class="section level4">
-<h4 id="creation-1">Creation<a class="anchor" aria-label="anchor" href="#creation-1"></a>
+<h4 id="creation">Creation<a class="anchor" aria-label="anchor" href="#creation"></a>
 </h4>
 <p>When inside a <a href="https://github.com/edouard-legoupil/graveler" class="external-link">graveler</a> project, running the function <code>level_up(name = "foo")</code> will add a new module - called <code>"foo"</code> - to your dashboard as well as a <code>fct</code> file, which is how {golem} <a href="https://engineering-shiny.org/build-app-golem.html?q=fct#submodules-and-utility-functions" class="external-link">suggests you functionalize your code</a>:</p>
 <pre><code>   .
@@ -247,12 +215,18 @@
 <p>In general, this helps keep your module code short and tidy, and allows you to put documentation for your functions just like a package.</p>
 </div>
 <div class="section level4">
-<h4 id="connection">Connection<a class="anchor" aria-label="anchor" href="#connection"></a>
+<h4 id="connection-between-modules-and-dashboard">Connection between modules and dashboard<a class="anchor" aria-label="anchor" href="#connection-between-modules-and-dashboard"></a>
 </h4>
 <p><code>level_up</code> might create your module, but you still need to tell your dashboard to include and run this module. To do so, there are three lines at the bottom you copy and paste into their appropriate files: body.R, app_server.R, and sidebar.R (uncommentted, of course).</p>
 <p>The body and sidebar lines need to be separated with commas if you have multiple modules, but the app_server will be individual lines like so:</p>
 <p><img src="reference/figures/mod_copy.png"></p>
 <p>Once that is done, your modules should appear on the left. All that is left to do is to insert your actual dashboard elements.</p>
+</div>
+<div class="section level4">
+<h4 id="communication-between-modules">Communication between modules<a class="anchor" aria-label="anchor" href="#communication-between-modules"></a>
+</h4>
+<p>Typically communication between modules will be required if you want to use filters across modules.</p>
+<p>This imply to set a specific object <code>reactivalues</code> that will be consumed by all your modules.</p>
 </div>
 </div>
 <div class="section level3">
@@ -265,26 +239,72 @@
 <div class="section level2">
 <h2 id="deployment">Deployment<a class="anchor" aria-label="anchor" href="#deployment"></a>
 </h2>
-<p>Once the <code>run_dev.R</code> file runs and your dashboard is error free, you can go for deployment. Here are some examples of RStudio integration publishing. This assumes you have your server set up and your Rstudio Connect account linked to your RStudio IDE.</p>
+<p>Once the <code>run_dev.R</code> file runs and your dashboard is error free, you can go for deployment.</p>
+<p>Get in touch with <strong>UNHCR Global Data Service</strong> to obtain a Rstudio Connect license.</p>
+<p>For publication, you have two main options.</p>
 <div class="section level3">
-<h3 id="publish-via-button">Publish via Button<a class="anchor" aria-label="anchor" href="#publish-via-button"></a>
+<h3 id="option-1-publish-via-button">Option 1: Publish via Button<a class="anchor" aria-label="anchor" href="#option-1-publish-via-button"></a>
 </h3>
 <p>In order to deploy your application, the basic file have been created.</p>
 <p>Run the <code>app.R</code> file to launch your application locally and then click on the blue: “<code>publish button</code>”” in the top right. <img src="reference/figures/deploy.png"></p>
 <p>It will gather your dependencies, ensure the server has them installed, and then your dashboard will be viewable on RStudio Connect. <a href="https://data-viz.it.wisc.edu/__docs__/admin/appendix/deployment-guide/" class="external-link">More info on deployement here</a></p>
 </div>
 <div class="section level3">
-<h3 id="publish-via-github">Publish via Github<a class="anchor" aria-label="anchor" href="#publish-via-github"></a>
+<h3 id="option-2-publish-via-github">Option 2: Publish via Github<a class="anchor" aria-label="anchor" href="#option-2-publish-via-github"></a>
 </h3>
+<p>As a general approach, it is a good practice to keep a copy of your dashboard in github.</p>
+<blockquote>
+<p>Be cautious with password and token - do not upload this in github. Password and token should rather be called as envrionement variables and set up separately after deployement in rstudio Connect</p>
+</blockquote>
 <p>While more involved then simply clicking a button, git backed content will ensure your published works will align with your team’s codebase and allow others to collaborate easier. Earlier, we made a <code>manifest.json</code> file at the end of the <code>01_dev.R</code> file. This creates an “image” that RStudio looks for and reproduces from github directly.</p>
 <p>To publish for the first time, you push your code to whichever repo and branch on github, then in RStudio Connect you click its blue, publish button. You then navigate to the repo and branch you just pushed to, find the manifest file. Just like before, it will gather your dependencies from the manifest, ensure the server has them installed, and then your dashboard will be viewable on RStudio Connect.</p>
 <p>To republish changes in the future, you simply merge your code to github and the file will automatically reflect those changes when it sees them.</p>
 </div>
-<div class="section level3">
-<h3 id="register-your-dashbaord">Register your dashbaord!<a class="anchor" aria-label="anchor" href="#register-your-dashbaord"></a>
-</h3>
-<p>On UNHCR Data Portal: <a href="https://data.unhcr.org/en/dataviz" class="external-link">https://data.unhcr.org/en/dataviz</a></p>
 </div>
+<div class="section level2">
+<h2 id="learn-from-examples">Learn from Examples<a class="anchor" aria-label="anchor" href="#learn-from-examples"></a>
+</h2>
+<p>Before you start, scope well your project. Dashboard are not always the best way to present information. Think of a simple comparison: when you drive your car, your dashboard is giving you the key information you need so that you can make a decision based on a knowledge you already have (<em>i.e., you already know how to interpret the information of the various gauges</em>). If you rather try to present information, in order to build knowledge, then creating a notebook with narrative to explain the data will be likely more effective.</p>
+<p>You can see check typical examples of dashboard within the package: one for protection monitoring and one for response monitoring. They were prepared with dummy data for the famous country called <a href="Ruritania">Ruritania</a></p>
+<p>As a <em>rule of thumb</em>, a good dashboard should remain simple to be effective (aka not more than 7 charts, and not more than 7 categories by charts).</p>
+<p>To help in the design process, the package includes examples of typical charts that can be assembled together both for Response and Protection Monitoring. The file structure is located in the <a href="https://github.com/Edouard-Legoupil/graveler/tree/main/inst/examples" class="external-link">examples folder</a>.</p>
+<div class="section level5">
+<h5 id="example-1-protection-monitoring">Example 1: Protection Monitoring<a class="anchor" aria-label="anchor" href="#example-1-protection-monitoring"></a>
+</h5>
+<p>Typically the content of a Protection Monitoring Dashboard allows to quickly identify the situation of basic rights in order to pilot the activities on the ground. It should complement (<em>and not replace!</em>) an in-depth protection analysis based on the protection risk equation. It would include:</p>
+<ol style="list-style-type: decimal">
+<li><p><strong>Exposure: Vulnerable Populations:</strong> Treemap displaying the percentage of different vulnerable populations (e.g., children, women, elderly, disabled) affected by protection concerns.</p></li>
+<li><p><strong>Thread: Incident Types and Frequency:</strong> Line chart illustrating the trend in the frequency of of different types of protection incidents (e.g., violence, exploitation, discrimination) over time, allowing for identification of spikes or patterns.</p></li>
+<li><p><strong>Coping: Response Coverage:</strong> Donut chart showcasing the coverage and reach of protection interventions by different implementing organizations or sectors.</p></li>
+<li><p><strong>Compliance with Protection Standards:</strong> Radar chart comparing the adherence to different protection standards (e.g., human rights principles, international humanitarian law) by various implementing actors or sectors.</p></li>
+<li><p><strong>Protection Advocacy Challenges:</strong> Gantt chart depicting the timeline of identified advocacy and the status of efforts to address them, allowing for tracking progress and resolution.</p></li>
+<li><p><strong>Key Performance Indicators (KPIs):</strong> Highlighted numbers specific KPIs related to the protection response (e.g., number of cases resolved, number of survivors accessing support services).</p></li>
+<li><p><strong>Geographic Distribution:</strong> Choropleth map presenting the spatial distribution of protection incidents, vulnerability, or response activities, allowing for visual identification of hotspots or areas in need.</p></li>
+</ol>
+<pre><code>graveler::_example_protection()</code></pre>
+<p><img src="reference/figures/empty.png" width="551"></p>
+</div>
+<div class="section level5">
+<h5 id="example-2-response-monitoring">Example 2: Response Monitoring<a class="anchor" aria-label="anchor" href="#example-2-response-monitoring"></a>
+</h5>
+<p>Typically the content of a Response Monitoring Dashboard allows to ensure that the right activities are done right. It would typically include:</p>
+<ol style="list-style-type: decimal">
+<li><p><strong>Needs Assessment and Population:</strong> Population pyramid illustrating the demographic composition of the affected population (e.g., age, gender) including specific needs to inform targeted response planning.</p></li>
+<li><p><strong>Resources Allocation:</strong> Heatmap representing the allocation of resources (e.g., funding, personnel, supplies) by response activities, allowing for visual identification of areas with high or low response coverage.</p></li>
+<li><p><strong>Key Performance Indicators (KPIs):</strong> Gauge chart indicating the achievement of predetermined targets or benchmarks for the response activities.</p></li>
+<li><p><strong>Funding Management:</strong> Staked Bar chart comparing the planned versus actual resource allocations to identify discrepancies or gaps in resource management.</p></li>
+<li><p><strong>Coordination and Partnership:</strong> Sankey diagram showing the collaboration and partnerships among different response organizations or clusters, measuring the frequency of coordination meetings or joint planning efforts</p></li>
+<li><p><strong>Impact and Outcome:</strong> Bubble chart showcasing the correlation between response interventions and key outcomes or impact indicators (e.g., improved health indicators, increased access to education).</p></li>
+<li><p><strong>Alert:</strong> Area chart providing real-time updates on key indicators, allowing for immediate identification of emerging trends or shifts in the humanitarian situation (for instance average assistance enrollment processing time).</p></li>
+</ol>
+<pre><code>graveler::_example_response()</code></pre>
+<p><img src="reference/figures/empty.png" width="551"></p>
+</div>
+</div>
+<div class="section level2">
+<h2 id="id_-register-your-dashbaord">.. Register your dashbaord!<a class="anchor" aria-label="anchor" href="#id_-register-your-dashbaord"></a>
+</h2>
+<p>On UNHCR Data Portal: <a href="https://data.unhcr.org/en/dataviz" class="external-link">https://data.unhcr.org/en/dataviz</a></p>
 </div>
 </div>
   </main><aside class="col-md-3"><div class="links">

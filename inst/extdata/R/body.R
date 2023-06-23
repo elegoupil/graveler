@@ -2,11 +2,11 @@ body <- function() {
   dashboardBody(
     unhcrshiny::theme_shinydashboard_unhcr(),
     tags$head(
-     # tags$link(rel = "stylesheet", type = "text/css", href = "custom.css"),
       tags$script(src = "custom.js")
     ),
     tabItems(
-      #Add ui module here (e.g., uiOne("one"))
+      #Add ui module here - separated with a coma!
+      mod_home_ui("home_ui_1")
     )
   )
 }
