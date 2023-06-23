@@ -1,6 +1,6 @@
 Binding: graveler_dashboard
 Title: a UNHCR Shiny Dashboard
-OpenFiles: dev/01_dev.R, dev/run_dev.R, dev/02_deploy.R
+OpenFiles: dev/01_dev.R, dev/run_dev.R
 Icon: unhcr_sprite.png
 
 Parameter: pkg_name

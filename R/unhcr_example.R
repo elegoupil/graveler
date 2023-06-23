@@ -12,6 +12,8 @@
 #'
 #' }
 unhcr_example <- function() { # nocov start
+  if (!requireNamespace(package = "unhcrshiny"))
+    message("Package 'unhcrshin' is required to run this function")
   if (!requireNamespace(package = "shinydashboard"))
     message("Package 'shinydashboard' is required to run this function")
   shiny::shinyAppDir(system.file("examples/unhcr", package = "graveler", mustWork = TRUE))
