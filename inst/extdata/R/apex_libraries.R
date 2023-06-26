@@ -1,18 +1,14 @@
-
+## basic list of libraries to add to your projects
 pkgs <- c(
   "unhcrshiny",
-  "devtools",
-  "dplyr",
-  "lubridate",
+  "tidyverse",
   "golem",
-  "pins",
   "shiny",
   "shinyjs",
   "shinyWidgets",
   "shinydashboard",
   "shinydashboardPlus"
 )
-
 for (i in pkgs) {
   library(i, character.only = TRUE)
 }

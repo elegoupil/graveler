@@ -190,7 +190,13 @@ In general, this helps keep your module code short and tidy, and allows you to p
 
   * Building a chart  
  
-Using this {graveler} fork, this will be done through the creation of a dedicated {fusen} notebook where you should prefix all your function with `fct_` to distinguish from the modules that comes with `fct_`. Using {fusen} allows for quick peer review, robust documentation and easy debugging (as you can always understand if an issue arise from the interface or from the functions below it). When you create a [graveler] project, a default fusen notebook is created under `"dev/function_documentation.Rmd"` wich comes with a series of default function with key dashboard charts.
+Using this {graveler} fork, this will be done through the creation of a dedicated {fusen} notebook where you should prefix all your function with `fct_` to distinguish from the modules that comes with `fct_`. Using {fusen} allows for quick peer review, robust documentation and easy debugging (as you can always understand if an issue arise from the interface or from the functions below it). When you create a [graveler] project, a default {fusen} notebook is created under `"dev/function_documentation.Rmd"` which comes with a series of default function with key dashboard charts.
+
+
+Your goal is to to get :
+
+> 0 errors ✔ | 0 warnings ✔ | 0 notes ✔
+
 
 Please check the examples to better understand how this works.
 

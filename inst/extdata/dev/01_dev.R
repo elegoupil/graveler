@@ -25,6 +25,8 @@ rstudioapi::navigateToFile("dev/run_dev.R")
 
 ## Go to function_documentation.Rmd to build your back office functions with Fusen
 rstudioapi::navigateToFile("dev/function_documentation.Rmd")
+## Get your function and then build your package with 
+fusen::inflate(flat_file = "dev/function_documentation.Rmd", vignette_name = "Development")
 
 ## Make sure to update imported libraries in the package namespace
 attachment::att_amend_desc()

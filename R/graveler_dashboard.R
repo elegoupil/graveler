@@ -26,11 +26,12 @@ graveler_dashboard <- function(path,...) {
   contents <- c(
     paste("Package:", text_list$pkg_name),
     paste("Title:", text_list$title),
-    "Version: 0.0.0",
+    "Version: 0.0.900",
     paste("Author:", text_list$username),
-    "Description: Your Description Here",
+    "Maintainer: Name FirstName <unhcrid@unhcr.org>",
+    "Description: Your Description Here.",
     "Encoding: UTF-8",
-    "LazyData: true"
+    "License: MIT + file LICENSE"
   )
 
   writeLines(contents, con = file.path(path, "DESCRIPTION"))
