@@ -68,7 +68,7 @@
 <div class="section level2">
 <h2 id="overview">Overview<a class="anchor" aria-label="anchor" href="#overview"></a>
 </h2>
-<p>This <a href="https://github.com/ghcarlalan/graveler" class="external-link">{graveler} fork</a> is an <strong>Rstudio Project Template</strong> and a wrapper for <a href="https://engineering-shiny.org/" class="external-link">{golem}</a>, <a href="https://rstudio.github.io/shinydashboard/index.html" class="external-link">{shinyDashboard}</a> and <a href="https://edouard-legoupil.github.io/unhcrshiny/" class="external-link">{unhcrshiny}</a> packages.</p>
+<p>This <a href="https://github.com/ghcarlalan/graveler" class="external-link">{graveler} fork</a> is an <strong>Rstudio Project Template</strong> and a wrapper for <a href="https://engineering-shiny.org/" class="external-link">{golem}</a>, <a href="https://rstudio.github.io/shinydashboard/index.html" class="external-link">{shinyDashboard}</a>, <a href="https://thinkr-open.github.io/fusen" class="external-link">{fusen}</a>, and <a href="https://edouard-legoupil.github.io/unhcrshiny/" class="external-link">{unhcrshiny}</a> packages.</p>
 <p>At a high level, {golem} turns your shiny dashboards into a package framework and allows you to build and deploy them almost exactly as you would for an R package. This allows for better documentation, testing, robustness, etc. {graveler} abstracts away its technical side and set defaults for the development workflow of UNHCR dashboards.</p>
 <p>You shall then be able to make a working dashboard in a few minutes!</p>
 </div>
@@ -186,7 +186,7 @@
 <div class="section level4">
 <h4 id="creation">Creation<a class="anchor" aria-label="anchor" href="#creation"></a>
 </h4>
-<p>When inside a <a href="https://github.com/edouard-legoupil/graveler" class="external-link">graveler</a> project, running the function <code>level_up(name = "foo")</code> will add a new module - called <code>"foo"</code> - to your dashboard as well as a <code>fct</code> file, which is how {golem} <a href="https://engineering-shiny.org/build-app-golem.html?q=fct#submodules-and-utility-functions" class="external-link">suggests you functionalize your code</a>:</p>
+<p>When inside a <a href="https://github.com/edouard-legoupil/graveler" class="external-link">graveler</a> project, running the function <code>level_up(name = "foo")</code> will add a new module - called <code>"foo"</code> - to your dashboard :</p>
 <pre><code>   .
    ├── R/
    │   ├── apex_libraries.R
@@ -213,6 +213,35 @@
 <p>You place your UI and server code in the <code>mod</code> file, and then you abstract away repeatable data manipulation or plotting functions inside the <code>fct</code> file. You can see this in the <code>unhcrboard</code> example dashboard files:</p>
 <p><img src="reference/figures/fct_display.png"></p>
 <p>In general, this helps keep your module code short and tidy, and allows you to put documentation for your functions just like a package.</p>
+</div>
+<div class="section level4">
+<h4 id="set-up-utilities-functions-for-your-application">Set up utilities functions for your application<a class="anchor" aria-label="anchor" href="#set-up-utilities-functions-for-your-application"></a>
+</h4>
+<p>{golem} <a href="https://engineering-shiny.org/build-app-golem.html?q=fct#submodules-and-utility-functions" class="external-link">suggests you functionalize your code</a> by creating dedicated functions that works independently from the interface. Such utilities could include:</p>
+<ul>
+<li><p>connecting to an API using token (that would be stored as environment variables)</p></li>
+<li><p>Data tidying and cleaning</p></li>
+<li><p>Building a chart</p></li>
+</ul>
+<p>Using this {graveler} fork, this will be done through the creation of a dedicated {fusen} notebook where you should prefix all your function with <code>fct_</code> to distinguish from the modules that comes with <code>fct_</code>. Using {fusen} allows for quick peer review, robust documentation and easy debugging (as you can always understand if an issue arise from the interface or from the functions below it). When you create a [graveler] project, a default fusen notebook is created under <code>"dev/function_documentation.Rmd"</code> wich comes with a series of default function with key dashboard charts.</p>
+<p>Please check the examples to better understand how this works.</p>
+</div>
+<div class="section level4">
+<h4 id="token-and-authentication">Token and authentication<a class="anchor" aria-label="anchor" href="#token-and-authentication"></a>
+</h4>
+<p>For evident data protection reason, it is key not to include any user name, password or authentication. The right way to do this is to use environment variables.</p>
+<p>This will be the case for instance if you pull data from <a href="https://edouard-legoupil.github.io/riddle/#install-and-configure-authentication-token" class="external-link">RIDL</a> -</p>
+<p>Below is an example to access data from ActivityInfo using the <a href="https://www.activityinfo.org/support/docs/R/index.html" class="external-link">dedicaed R package</a></p>
+<pre><code><span><span class="co"># set up token as environement variable - aka save within your hidden file .Renviron</span></span>
+<span><span class="va">token</span> <span class="op">&lt;-</span> <span class="st">"activityinfotoken.."</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Sys.setenv.html" class="external-link">Sys.setenv</a></span><span class="op">(</span>ACTIVITYINFOTOKEN <span class="op">=</span> <span class="va">token</span><span class="op">)</span><span class="op">)</span>   </span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Sys.getenv.html" class="external-link">Sys.getenv</a></span><span class="op">(</span><span class="st">"ACTIVITYINFOTOKEN"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/rm.html" class="external-link">rm</a></span><span class="op">(</span><span class="va">token</span><span class="op">)</span></span>
+<span>  </span>
+<span><span class="co">## Now we can login using this environement variable</span></span>
+<span><span class="fu">activityinfo</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/activityinfo/man/activityInfoToken.html" class="external-link">activityInfoToken</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Sys.getenv.html" class="external-link">Sys.getenv</a></span><span class="op">(</span><span class="st">"ACTIVITYINFOTOKEN"</span><span class="op">)</span>,</span>
+<span>                                prompt <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre>
+<p>When deploying on Rstudio Connect, you will need to deploy a first time,then go to the settings of your deployed project and set up there this same environment variable. See <a href="https://posit.co/wp-content/themes/Posit/public/markdown-blogs/rstudio-connect-v1-5-14/index.html#secure-environment-variables" class="external-link">more info here</a>.</p>
 </div>
 <div class="section level4">
 <h4 id="connection-between-modules-and-dashboard">Connection between modules and dashboard<a class="anchor" aria-label="anchor" href="#connection-between-modules-and-dashboard"></a>

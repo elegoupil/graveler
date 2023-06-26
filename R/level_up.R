@@ -65,7 +65,7 @@ level_up <- function(name, pkg = get_graveler_wd(), open = TRUE, dir_create = TR
   write_there(glue("# menuItem(\"displayName\",tabName = \"%name%\",icon = icon(\"user\"))"))
   write_there(" ")
 
-  golem::add_fct("display", module = name)
+ # golem::add_fct("display", module = name)
 
   cat_green_tick(glue("Files created at %where%"))
 

@@ -4,7 +4,7 @@
 
 ## Overview
 
-This [{graveler} fork](https://github.com/ghcarlalan/graveler) is an __Rstudio Project Template__ and a wrapper for [{golem}](https://engineering-shiny.org/), [{shinyDashboard}](https://rstudio.github.io/shinydashboard/index.html) and [{unhcrshiny}](https://edouard-legoupil.github.io/unhcrshiny/) packages. 
+This [{graveler} fork](https://github.com/ghcarlalan/graveler) is an __Rstudio Project Template__ and a wrapper for [{golem}](https://engineering-shiny.org/), [{shinyDashboard}](https://rstudio.github.io/shinydashboard/index.html), [{fusen}](https://thinkr-open.github.io/fusen), and [{unhcrshiny}](https://edouard-legoupil.github.io/unhcrshiny/) packages. 
 
 At a high level, {golem} turns your shiny dashboards into a package framework and allows you to build and deploy them almost exactly as you would for an R package. This allows for better documentation, testing, robustness, etc. {graveler} abstracts away its technical side and set defaults for the development workflow of UNHCR dashboards.
 
@@ -145,7 +145,7 @@ By default the template comes with an initial `home` module where the first tab 
 
 #### Creation
 
-When inside a `{graveler}` project, running the function `level_up(name = "foo")` will add a new module - called `"foo"` - to your dashboard as well as a `fct` file, which is how {golem} [suggests you functionalize your code](https://engineering-shiny.org/build-app-golem.html?q=fct#submodules-and-utility-functions):
+When inside a `{graveler}` project, running the function `level_up(name = "foo")` will add a new module - called `"foo"` - to your dashboard :
 
 ```
    .
@@ -179,6 +179,45 @@ You place your UI and server code in the `mod` file, and then you abstract away 
 ![](man/figures/fct_display.png)
 
 In general, this helps keep your module code short and tidy, and allows you to put documentation for your functions just like a package.
+
+#### Set up utilities functions for your application
+
+ {golem} [suggests you functionalize your code](https://engineering-shiny.org/build-app-golem.html?q=fct#submodules-and-utility-functions) by creating dedicated functions that works independently from the interface. Such utilities could include:  
+ 
+  * connecting to an API using token (that would be stored as environment variables) 
+
+  * Data tidying and cleaning  
+
+  * Building a chart  
+ 
+Using this {graveler} fork, this will be done through the creation of a dedicated {fusen} notebook where you should prefix all your function with `fct_` to distinguish from the modules that comes with `fct_`. Using {fusen} allows for quick peer review, robust documentation and easy debugging (as you can always understand if an issue arise from the interface or from the functions below it). When you create a [graveler] project, a default fusen notebook is created under `"dev/function_documentation.Rmd"` wich comes with a series of default function with key dashboard charts.
+
+Please check the examples to better understand how this works.
+
+
+#### Token and authentication
+
+For evident data protection reason, it is key not to include any user name, password or authentication. The right way to do this is to use environment variables. 
+
+This will be the case for instance if you pull data from [RIDL](https://edouard-legoupil.github.io/riddle/#install-and-configure-authentication-token) - 
+
+
+Below is an example to access data from ActivityInfo using the [dedicaed R package](https://www.activityinfo.org/support/docs/R/index.html)
+
+```
+# set up token as environement variable - aka save within your hidden file .Renviron
+token <- "activityinfotoken.."
+print(Sys.setenv(ACTIVITYINFOTOKEN = token))   
+Sys.getenv("ACTIVITYINFOTOKEN")
+rm(token)
+  
+## Now we can login using this environement variable
+activityinfo::activityInfoToken(Sys.getenv("ACTIVITYINFOTOKEN"),
+                                prompt = FALSE)
+```
+
+When deploying on Rstudio Connect, you will need to deploy a first time,then go to the settings of your deployed project and set up there this same environment variable. See [more info here](https://posit.co/wp-content/themes/Posit/public/markdown-blogs/rstudio-connect-v1-5-14/index.html#secure-environment-variables).
+
 
 #### Connection between modules and dashboard
 
