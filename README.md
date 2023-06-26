@@ -275,8 +275,18 @@ To publish for the first time, you push your code to whichever repo and branch o
 
 To republish changes in the future, you simply merge your code to github and the file will automatically reflect those changes when it sees them.
 
+### Good practices  when publishing
 
-## Learn from Examples
+ * Beware of token and password - see above on the usage of environment variable 
+ 
+ * favor publication from github as much as possible. Build and publish your package documentation on github with `pkgdown::build_site()`   
+ 
+ * share publication right with colleagues so that there's a back up plan to update the app if needed  
+ 
+ * once the application is published on the Rstudio server, document the name of the github repo for your app within Rstudio Connect metadata and use a specific URL before disseminating the app 
+ 
+
+## Learn from Examples!
 
 Before you start, scope well your project. Dashboard are not always the best way to present information. Think of a simple comparison: when you drive your car, your dashboard is giving you the key information you need so that you can make a decision based on a knowledge you already have (_i.e., you already know how to interpret the information of the various gauges_). If you rather try to present information, in order to build knowledge, then creating a notebook with narrative to explain the data will be likely more effective.
 

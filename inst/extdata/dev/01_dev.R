@@ -1,4 +1,4 @@
-## Add basic dependencies
+## Add basic default dependencies
 pkgs <- c(
   "unhcrshiny",
   "devtools",
@@ -16,19 +16,24 @@ pkgs <- c(
 for (i in pkgs) {
   usethis::use_package(i)
 }
-
-## Add manifest for CI/CD
+## and add manifest for CI/CD
 rsconnect::writeManifest()
 
 ## Go to run_dev.R and ensure the empty dashboard loads
 rstudioapi::navigateToFile("dev/run_dev.R")
-
 ## Alternatively you can run golem::run_dev()
 
-## Now start adding modules from console
-# Name of the module - "my_first_module"
-# graveler::level_up(name = "my_first_module") 
-
+## Go to function_documentation.Rmd to build your back office functions with Fusen
+rstudioapi::navigateToFile("dev/function_documentation.Rmd")
 
 ## Make sure to update imported libraries in the package namespace
 attachment::att_amend_desc()
+
+## Build the html package documentation for your utilities functions   
+pkgdown::build_site()
+
+## Now start adding modules from console 
+# Modules are like the pipe between your back-office functions and your user
+# Name of the module - "my_first_module"
+# graveler::level_up(name = "my_first_module") 
+

@@ -289,9 +289,19 @@
 <p>To publish for the first time, you push your code to whichever repo and branch on github, then in RStudio Connect you click its blue, publish button. You then navigate to the repo and branch you just pushed to, find the manifest file. Just like before, it will gather your dependencies from the manifest, ensure the server has them installed, and then your dashboard will be viewable on RStudio Connect.</p>
 <p>To republish changes in the future, you simply merge your code to github and the file will automatically reflect those changes when it sees them.</p>
 </div>
+<div class="section level3">
+<h3 id="good-practices-when-publishing">Good practices when publishing<a class="anchor" aria-label="anchor" href="#good-practices-when-publishing"></a>
+</h3>
+<ul>
+<li><p>Beware of token and password - see above on the usage of environment variable</p></li>
+<li><p>favor publication from github as much as possible. Build and publish your package documentation on github with <code><a href="https://pkgdown.r-lib.org/reference/build_site.html" class="external-link">pkgdown::build_site()</a></code></p></li>
+<li><p>share publication right with colleagues so that there’s a back up plan to update the app if needed</p></li>
+<li><p>once the application is published on the Rstudio server, document the name of the github repo for your app within Rstudio Connect metadata and use a specific URL before disseminating the app</p></li>
+</ul>
+</div>
 </div>
 <div class="section level2">
-<h2 id="learn-from-examples">Learn from Examples<a class="anchor" aria-label="anchor" href="#learn-from-examples"></a>
+<h2 id="learn-from-examples">Learn from Examples!<a class="anchor" aria-label="anchor" href="#learn-from-examples"></a>
 </h2>
 <p>Before you start, scope well your project. Dashboard are not always the best way to present information. Think of a simple comparison: when you drive your car, your dashboard is giving you the key information you need so that you can make a decision based on a knowledge you already have (<em>i.e., you already know how to interpret the information of the various gauges</em>). If you rather try to present information, in order to build knowledge, then creating a notebook with narrative to explain the data will be likely more effective.</p>
 <p>You can see check typical examples of dashboard within the package: one for protection monitoring and one for response monitoring. They were prepared with dummy data for the famous country called <a href="Ruritania">Ruritania</a></p>
