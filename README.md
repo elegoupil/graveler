@@ -133,7 +133,56 @@ In the span of a minute you have already made a reproducible and fully functiona
 
 If you are familiar with building R packages, this file is the equivalent of running the `Install and Restart` option: it creates your `NAMESPACE`, documents .Rd files, and temporarily installs it locally.
 
-> If you need to add a new library, simply add into the `01_dev.R` file and the `apex_libraries.R` file and run it again. If you need to remove a library, you will need to edit the `DESCRIPTION` file manually.
+
+
+### Back office
+
+To build a robust app, it is key to separate the back-office (basically an R package which act as _utilities functions_) from the user interaction management (the ShinyApp). 
+
+#### Set up utilities functions for your application
+
+ {golem} [suggests you functionalize your code](https://engineering-shiny.org/build-app-golem.html?q=fct#submodules-and-utility-functions) by creating dedicated functions that works independently from the interface. Such utilities could include:  
+ 
+  * connecting to an API using token (that would be stored as environment variables) 
+
+  * Data tidying and cleaning  
+
+  * Building a chart  
+ 
+Using this {graveler} fork, this will be done through the creation of a dedicated {fusen} notebook where you should prefix all your function with `fct_` to distinguish from the modules that comes with `fct_`. Using {fusen} allows for quick peer review, robust documentation and easy debugging (as you can always understand if an issue arise from the interface or from the functions below it). When you create a [graveler] project, a default {fusen} notebook is created under `"dev/function_documentation.Rmd"` which comes with a series of default function with key dashboard charts.
+
+> If you need to add a new library, simply make sure to systematically reference them within your `@import` or `@importFrom`, within your function documentation. make sure to `attachment::att_amend_desc()` so the library are referenced in your NAMESPACE
+
+Your goal is to to get :
+
+> 0 errors ✔ | 0 warnings ✔ | 0 notes ✔
+
+
+Please check the examples to better understand how this works.
+
+
+#### Token and authentication
+
+For evident data protection reason, it is key not to include any user name, password or authentication. The right way to do this is to use environment variables. 
+
+This will be the case for instance if you pull data from [RIDL](https://edouard-legoupil.github.io/riddle/#install-and-configure-authentication-token) - 
+
+
+Below is an example to access data from ActivityInfo using the [dedicaed R package](https://www.activityinfo.org/support/docs/R/index.html)
+
+```
+# set up token as environement variable - aka save within your hidden file .Renviron
+token <- "activityinfotoken.."
+print(Sys.setenv(ACTIVITYINFOTOKEN = token))   
+Sys.getenv("ACTIVITYINFOTOKEN")
+rm(token)
+  
+## Now we can login using this environement variable
+activityinfo::activityInfoToken(Sys.getenv("ACTIVITYINFOTOKEN"),
+                                prompt = FALSE)
+```
+
+When deploying on Rstudio Connect, you will need to deploy a first time,then go to the settings of your deployed project and set up there this same environment variable. See [more info here](https://posit.co/wp-content/themes/Posit/public/markdown-blogs/rstudio-connect-v1-5-14/index.html#secure-environment-variables).
 
 
 
@@ -179,50 +228,6 @@ You place your UI and server code in the `mod` file, and then you abstract away 
 ![](man/figures/fct_display.png)
 
 In general, this helps keep your module code short and tidy, and allows you to put documentation for your functions just like a package.
-
-#### Set up utilities functions for your application
-
- {golem} [suggests you functionalize your code](https://engineering-shiny.org/build-app-golem.html?q=fct#submodules-and-utility-functions) by creating dedicated functions that works independently from the interface. Such utilities could include:  
- 
-  * connecting to an API using token (that would be stored as environment variables) 
-
-  * Data tidying and cleaning  
-
-  * Building a chart  
- 
-Using this {graveler} fork, this will be done through the creation of a dedicated {fusen} notebook where you should prefix all your function with `fct_` to distinguish from the modules that comes with `fct_`. Using {fusen} allows for quick peer review, robust documentation and easy debugging (as you can always understand if an issue arise from the interface or from the functions below it). When you create a [graveler] project, a default {fusen} notebook is created under `"dev/function_documentation.Rmd"` which comes with a series of default function with key dashboard charts.
-
-
-Your goal is to to get :
-
-> 0 errors ✔ | 0 warnings ✔ | 0 notes ✔
-
-
-Please check the examples to better understand how this works.
-
-
-#### Token and authentication
-
-For evident data protection reason, it is key not to include any user name, password or authentication. The right way to do this is to use environment variables. 
-
-This will be the case for instance if you pull data from [RIDL](https://edouard-legoupil.github.io/riddle/#install-and-configure-authentication-token) - 
-
-
-Below is an example to access data from ActivityInfo using the [dedicaed R package](https://www.activityinfo.org/support/docs/R/index.html)
-
-```
-# set up token as environement variable - aka save within your hidden file .Renviron
-token <- "activityinfotoken.."
-print(Sys.setenv(ACTIVITYINFOTOKEN = token))   
-Sys.getenv("ACTIVITYINFOTOKEN")
-rm(token)
-  
-## Now we can login using this environement variable
-activityinfo::activityInfoToken(Sys.getenv("ACTIVITYINFOTOKEN"),
-                                prompt = FALSE)
-```
-
-When deploying on Rstudio Connect, you will need to deploy a first time,then go to the settings of your deployed project and set up there this same environment variable. See [more info here](https://posit.co/wp-content/themes/Posit/public/markdown-blogs/rstudio-connect-v1-5-14/index.html#secure-environment-variables).
 
 
 #### Connection between modules and dashboard

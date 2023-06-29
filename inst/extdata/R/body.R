@@ -1,3 +1,13 @@
+#' UI Body
+#'
+#' This function is internally used to manage the body
+#'
+#' @import shiny
+#' @import shinydashboard
+#' @importFrom unhcrshiny theme_shinydashboard_unhcr
+#' @noRd
+#' @keywords internal
+
 body <- function() {
   dashboardBody(
     unhcrshiny::theme_shinydashboard_unhcr(),

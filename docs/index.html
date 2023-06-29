@@ -173,9 +173,47 @@
 <p>In the span of a minute you have already made a reproducible and fully functional framework!</p>
 <p><img src="reference/figures/empty.png" width="502"></p>
 <p>If you are familiar with building R packages, this file is the equivalent of running the <code>Install and Restart</code> option: it creates your <code>NAMESPACE</code>, documents .Rd files, and temporarily installs it locally.</p>
+</div>
+</div>
+<div class="section level3">
+<h3 id="back-office">Back office<a class="anchor" aria-label="anchor" href="#back-office"></a>
+</h3>
+<p>To build a robust app, it is key to separate the back-office (basically an R package which act as <em>utilities functions</em>) from the user interaction management (the ShinyApp).</p>
+<div class="section level4">
+<h4 id="set-up-utilities-functions-for-your-application">Set up utilities functions for your application<a class="anchor" aria-label="anchor" href="#set-up-utilities-functions-for-your-application"></a>
+</h4>
+<p>{golem} <a href="https://engineering-shiny.org/build-app-golem.html?q=fct#submodules-and-utility-functions" class="external-link">suggests you functionalize your code</a> by creating dedicated functions that works independently from the interface. Such utilities could include:</p>
+<ul>
+<li><p>connecting to an API using token (that would be stored as environment variables)</p></li>
+<li><p>Data tidying and cleaning</p></li>
+<li><p>Building a chart</p></li>
+</ul>
+<p>Using this {graveler} fork, this will be done through the creation of a dedicated {fusen} notebook where you should prefix all your function with <code>fct_</code> to distinguish from the modules that comes with <code>fct_</code>. Using {fusen} allows for quick peer review, robust documentation and easy debugging (as you can always understand if an issue arise from the interface or from the functions below it). When you create a [graveler] project, a default {fusen} notebook is created under <code>"dev/function_documentation.Rmd"</code> which comes with a series of default function with key dashboard charts.</p>
 <blockquote>
-<p>If you need to add a new library, simply add into the <code>01_dev.R</code> file and the <code>apex_libraries.R</code> file and run it again. If you need to remove a library, you will need to edit the <code>DESCRIPTION</code> file manually.</p>
+<p>If you need to add a new library, simply make sure to systematically reference them within your <code>@import</code> or <code>@importFrom</code>, within your function documentation. make sure to <code><a href="https://thinkr-open.github.io/attachment/reference/att_amend_desc.html" class="external-link">attachment::att_amend_desc()</a></code> so the library are referenced in your NAMESPACE</p>
 </blockquote>
+<p>Your goal is to to get :</p>
+<blockquote>
+<p>0 errors ✔ | 0 warnings ✔ | 0 notes ✔</p>
+</blockquote>
+<p>Please check the examples to better understand how this works.</p>
+</div>
+<div class="section level4">
+<h4 id="token-and-authentication">Token and authentication<a class="anchor" aria-label="anchor" href="#token-and-authentication"></a>
+</h4>
+<p>For evident data protection reason, it is key not to include any user name, password or authentication. The right way to do this is to use environment variables.</p>
+<p>This will be the case for instance if you pull data from <a href="https://edouard-legoupil.github.io/riddle/#install-and-configure-authentication-token" class="external-link">RIDL</a> -</p>
+<p>Below is an example to access data from ActivityInfo using the <a href="https://www.activityinfo.org/support/docs/R/index.html" class="external-link">dedicaed R package</a></p>
+<pre><code><span><span class="co"># set up token as environement variable - aka save within your hidden file .Renviron</span></span>
+<span><span class="va">token</span> <span class="op">&lt;-</span> <span class="st">"activityinfotoken.."</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Sys.setenv.html" class="external-link">Sys.setenv</a></span><span class="op">(</span>ACTIVITYINFOTOKEN <span class="op">=</span> <span class="va">token</span><span class="op">)</span><span class="op">)</span>   </span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Sys.getenv.html" class="external-link">Sys.getenv</a></span><span class="op">(</span><span class="st">"ACTIVITYINFOTOKEN"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/rm.html" class="external-link">rm</a></span><span class="op">(</span><span class="va">token</span><span class="op">)</span></span>
+<span>  </span>
+<span><span class="co">## Now we can login using this environement variable</span></span>
+<span><span class="fu">activityinfo</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/activityinfo/man/activityInfoToken.html" class="external-link">activityInfoToken</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Sys.getenv.html" class="external-link">Sys.getenv</a></span><span class="op">(</span><span class="st">"ACTIVITYINFOTOKEN"</span><span class="op">)</span>,</span>
+<span>                                prompt <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre>
+<p>When deploying on Rstudio Connect, you will need to deploy a first time,then go to the settings of your deployed project and set up there this same environment variable. See <a href="https://posit.co/wp-content/themes/Posit/public/markdown-blogs/rstudio-connect-v1-5-14/index.html#secure-environment-variables" class="external-link">more info here</a>.</p>
 </div>
 </div>
 <div class="section level3">
@@ -213,39 +251,6 @@
 <p>You place your UI and server code in the <code>mod</code> file, and then you abstract away repeatable data manipulation or plotting functions inside the <code>fct</code> file. You can see this in the <code>unhcrboard</code> example dashboard files:</p>
 <p><img src="reference/figures/fct_display.png"></p>
 <p>In general, this helps keep your module code short and tidy, and allows you to put documentation for your functions just like a package.</p>
-</div>
-<div class="section level4">
-<h4 id="set-up-utilities-functions-for-your-application">Set up utilities functions for your application<a class="anchor" aria-label="anchor" href="#set-up-utilities-functions-for-your-application"></a>
-</h4>
-<p>{golem} <a href="https://engineering-shiny.org/build-app-golem.html?q=fct#submodules-and-utility-functions" class="external-link">suggests you functionalize your code</a> by creating dedicated functions that works independently from the interface. Such utilities could include:</p>
-<ul>
-<li><p>connecting to an API using token (that would be stored as environment variables)</p></li>
-<li><p>Data tidying and cleaning</p></li>
-<li><p>Building a chart</p></li>
-</ul>
-<p>Using this {graveler} fork, this will be done through the creation of a dedicated {fusen} notebook where you should prefix all your function with <code>fct_</code> to distinguish from the modules that comes with <code>fct_</code>. Using {fusen} allows for quick peer review, robust documentation and easy debugging (as you can always understand if an issue arise from the interface or from the functions below it). When you create a [graveler] project, a default {fusen} notebook is created under <code>"dev/function_documentation.Rmd"</code> which comes with a series of default function with key dashboard charts.</p>
-<p>Your goal is to to get :</p>
-<blockquote>
-<p>0 errors ✔ | 0 warnings ✔ | 0 notes ✔</p>
-</blockquote>
-<p>Please check the examples to better understand how this works.</p>
-</div>
-<div class="section level4">
-<h4 id="token-and-authentication">Token and authentication<a class="anchor" aria-label="anchor" href="#token-and-authentication"></a>
-</h4>
-<p>For evident data protection reason, it is key not to include any user name, password or authentication. The right way to do this is to use environment variables.</p>
-<p>This will be the case for instance if you pull data from <a href="https://edouard-legoupil.github.io/riddle/#install-and-configure-authentication-token" class="external-link">RIDL</a> -</p>
-<p>Below is an example to access data from ActivityInfo using the <a href="https://www.activityinfo.org/support/docs/R/index.html" class="external-link">dedicaed R package</a></p>
-<pre><code><span><span class="co"># set up token as environement variable - aka save within your hidden file .Renviron</span></span>
-<span><span class="va">token</span> <span class="op">&lt;-</span> <span class="st">"activityinfotoken.."</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Sys.setenv.html" class="external-link">Sys.setenv</a></span><span class="op">(</span>ACTIVITYINFOTOKEN <span class="op">=</span> <span class="va">token</span><span class="op">)</span><span class="op">)</span>   </span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/Sys.getenv.html" class="external-link">Sys.getenv</a></span><span class="op">(</span><span class="st">"ACTIVITYINFOTOKEN"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/rm.html" class="external-link">rm</a></span><span class="op">(</span><span class="va">token</span><span class="op">)</span></span>
-<span>  </span>
-<span><span class="co">## Now we can login using this environement variable</span></span>
-<span><span class="fu">activityinfo</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/activityinfo/man/activityInfoToken.html" class="external-link">activityInfoToken</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Sys.getenv.html" class="external-link">Sys.getenv</a></span><span class="op">(</span><span class="st">"ACTIVITYINFOTOKEN"</span><span class="op">)</span>,</span>
-<span>                                prompt <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre>
-<p>When deploying on Rstudio Connect, you will need to deploy a first time,then go to the settings of your deployed project and set up there this same environment variable. See <a href="https://posit.co/wp-content/themes/Posit/public/markdown-blogs/rstudio-connect-v1-5-14/index.html#secure-environment-variables" class="external-link">more info here</a>.</p>
 </div>
 <div class="section level4">
 <h4 id="connection-between-modules-and-dashboard">Connection between modules and dashboard<a class="anchor" aria-label="anchor" href="#connection-between-modules-and-dashboard"></a>
