@@ -1,21 +1,41 @@
 Binding: graveler_dashboard
-Title: using UNHCR Shiny Dashboard Template
-OpenFiles: dev/01_dev.R, dev/run_dev.R
+Title: using UNHCR Shiny Template
+OpenFiles: dev/01_dev.R
 Icon: unhcr_sprite.png
 
 Parameter: pkg_name
 Widget: TextInput
-Label: Pkg Name
+Label: AppID (same as dir)
 Default: UnhcrShinyDashboard
-
-Parameter: username
-Widget: TextInput
-Label: Username
-Default: myName
 Position: left
 
 Parameter: title
 Widget: TextInput
-Label: Display Title
+Label: Short Title
 Default: UNHCR Dashboard
 Position: right
+
+Parameter: firstname
+Widget: TextInput
+Label: First Name
+Default: Edouard
+Position: left
+
+Parameter: lastname
+Widget: TextInput
+Label: Last Name
+Default: Legoupil
+Position: right
+
+Parameter: email
+Widget: TextInput
+Label: email
+Default: legoupil@unhcr.org
+Position: left
+
+Parameter: githuborg
+Widget: TextInput
+Label: Github Account
+Default: unhcr-americas
+Position: right
+

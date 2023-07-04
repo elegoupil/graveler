@@ -14,9 +14,15 @@ library(testthat)
 pkgload::load_all(export_all = FALSE)
 ```
 
+<!--
+ For each fo the function you need, add FUSEN chunk through the Rstudio add-in " add {fusen} chunks"
+-->
 
 
 
+<!--
+ Once you have created your back office functions , run the next chunk to install and package them
+-->
 
 ```{r development-inflate, eval=FALSE}
 # Run but keep eval=FALSE to avoid infinite loop

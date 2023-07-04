@@ -22,26 +22,43 @@ graveler_dashboard <- function(path,...) {
   }
 
   names(text_list) <- names(dots)
-
+ 
+  ## Write the DESCRIPTION FILE
   contents <- c(
     paste("Package:", text_list$pkg_name),
     paste("Title:", text_list$title),
+    "Description: Fill a longer description of your package here.",
     "Version: 0.0.900",
-    paste("Author:", text_list$username),
-    "Maintainer: Name FirstName <unhcrid@unhcr.org>",
-    "Description: Your Description Here.",
+    paste0("Authors@R: c( person(\"", text_list$firstname,
+                            "\", \"", text_list$lastname, 
+                            "\", , \"", text_list$email, 
+                            "\", role = c(\"aut\", \"cre\")))"),
+    paste0("Maintainer:", text_list$firstname, " ", text_list$lastname, " <", text_list$email,">"),
+    paste0("URL: https://github.com/", text_list$githuborg, "/", text_list$pkg_name ),  
+    "License: MIT + file LICENSE",
     "Encoding: UTF-8",
-    "License: MIT + file LICENSE"
+    "LazyData: true"
   )
 
   writeLines(contents, con = file.path(path, "DESCRIPTION"))
 
-  url <- "https://rstudio.unhcr.org/"
+  ## File to connect to github
 
+  gitinst   <- c( "## Use git ----",
+                  "usethis::use_git()",
+                  "## Now associate your local project with the online repo your created ----",
+                  paste0("usethis::use_git_remote( \"origin\", url = \"https://github.com/",
+                    text_list$githuborg, "/", text_list$pkg_name, ".git\", overwrite = TRUE )")
+                 )
+  
+  writeLines(gitinst, con = file.path(paste0(path, "/dev"), "githublink.R"))
+  
+  ## Prewrite tool header...
+  url <- paste0("https://rstudio.unhcr.org/", text_list$pkg_name)
   header <- c(
     "header <- function() {",
-    "\tdashboardHeader(",
-    "\t\ttitle = tagList(",
+    "\t shinydashboard::dashboardHeader(",
+    "\t\t title = tagList(",
     paste0("\t\t\tspan(class = 'logo-lg',a(\"", text_list$title, "\",style=\"color:white !important\",href='", url, "')),") ,
     #paste0("\t\t\ta(style = \"margin: -15px\", href='", url ,"', img(src = \"www/graveler_sprite.svg\", width=\"225%\"))"),
     #"\t\t),",

@@ -5,16 +5,17 @@
 #' @import shiny
 #' @import shinydashboard
 #' @importFrom unhcrshiny theme_shinydashboard_unhcr
+#' @export
 #' @noRd
 #' @keywords internal
 
 body <- function() {
-  dashboardBody(
+  shinydashboard::dashboardBody(
     unhcrshiny::theme_shinydashboard_unhcr(),
     tags$head(
       tags$script(src = "custom.js")
     ),
-    tabItems(
+    shinydashboard::tabItems(
       #Add ui module here - separated with a coma!
       mod_home_ui("home_ui_1")
     )

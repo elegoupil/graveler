@@ -28,7 +28,6 @@ mod_home_ui <- function(id) {
 		  cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."),
 		    style = "font-size: 20px"),
 		  br(),
-
 		  fluidRow(
 		      actionButton(NS(id, "go_to_firstmod"),
 		                   label = "Start Exploring",
@@ -37,7 +36,17 @@ mod_home_ui <- function(id) {
 		                   icon = icon("chevron-right")),
 		      style = "font-size: 18px; text-align: right;"
 		    ),
-		  br()
+		  br(),
+		  br(),
+		  p(tags$i( class = "fa fa-github"),
+		    "App built with ",
+		    tags$a(href="https://edouard-legoupil.github.io/graveler/",
+		           "{graveler}" ),
+		    " -- report ",
+		    tags$a(href="https://github.com/Edouard-Legoupil/graveler/issues",
+		           "issues here." ,
+		    ),
+		    style = "font-size: 10px")
 		)
 	)
 }
