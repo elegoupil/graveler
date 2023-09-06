@@ -5,13 +5,13 @@
 #' @import shiny
 #' @import shinydashboard
 #' @importFrom unhcrshiny theme_shinydashboard_unhcr
-#' @export
 #' @noRd
 #' @keywords internal
 
 body <- function() {
   shinydashboard::dashboardBody(
     unhcrshiny::theme_shinydashboard_unhcr(),
+    golem::activate_js(),
     tags$head(
       tags$script(src = "custom.js")
     ),

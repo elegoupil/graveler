@@ -76,7 +76,7 @@ level_up <- function(name,
   write_there(" ")
   write_there("## copy to sidebar.R")
   write_there(glue(
-    "# menuItem(\"displayName\",tabName = \"%name%\",icon = icon(\"user\"))"
+    "# shinydashboard::menuItem(\"displayName\",tabName = \"%name%\",icon = icon(\"user\"))"
   ))
   write_there(" ")
   write_there("## and copy to app_server.R")

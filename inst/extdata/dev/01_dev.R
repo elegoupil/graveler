@@ -54,8 +54,6 @@ golem::run_dev()
 
 ## Add manifest for CI/CD 
 rsconnect::writeManifest()
-## create the app.R in root folder that you will use for deployment
-golem::add_rstudioconnect_file()
 ## For deployment use the app.R file at the root of your project and then use 
 # the deployment button in blue to publish your project http://rstudio.unhcr.org 
 

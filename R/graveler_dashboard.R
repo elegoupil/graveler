@@ -23,7 +23,7 @@ graveler_dashboard <- function(path,...) {
 
   names(text_list) <- names(dots)
  
-  ## Write the DESCRIPTION FILE
+  ## Write the DESCRIPTION FILE --------------
   contents <- c(
     paste("Package:", text_list$pkg_name),
     paste("Title:", text_list$title),
@@ -42,8 +42,7 @@ graveler_dashboard <- function(path,...) {
 
   writeLines(contents, con = file.path(path, "DESCRIPTION"))
 
-  ## File to connect to github
-
+  ## File to connect to github --------------
   gitinst   <- c( "## Use git ----",
                   "usethis::use_git()",
                   "## Now associate your local project with the online repo your created ----",
@@ -53,7 +52,56 @@ graveler_dashboard <- function(path,...) {
   
   writeLines(gitinst, con = file.path(paste0(path, "/dev"), "githublink.R"))
   
-  ## Prewrite tool header...
+  
+  ## File for app config --------------
+  appconfig   <- c( " ## Prewrite the app config ----------",
+                    " #' Access files in the current app",
+                    " #'",
+                    "#' NOTE: If you manually change your package name in the DESCRIPTION,",
+                    "#' don't forget to change it here too, and in the config file.",
+                    "#' For a safer name change mechanism, use the `golem::set_golem_name()` function.",
+                    "#'",
+                    "#' @param ... character vectors, specifying subdirectory and file(s)",
+                    "#' within your package. The default, none, returns the root of the app.",
+                    " #'",
+                    " #' @noRd",
+                    "app_sys <- function(...) {",
+                    paste0("system.file(..., package = \"", text_list$pkg_name,"\")") ,
+                    "}",
+                    "#' Read App Config",
+                    " #'",
+                    "#' @param value Value to retrieve from the config file.",
+                    "#' @param config GOLEM_CONFIG_ACTIVE value. If unset, R_CONFIG_ACTIVE.",
+                    "#' If unset, \"default\".",
+                    "#' @param use_parent Logical, scan the parent directory for config file.",
+                    " #' @param file Location of the config file",
+                    "#'",
+                    "#' @noRd",
+                    "get_golem_config <- function(",
+                    "value,",
+                    "config = Sys.getenv(",
+                    "\"GOLEM_CONFIG_ACTIVE\",",
+                    "Sys.getenv(",
+                    "\"R_CONFIG_ACTIVE\",",
+                    "\"default\"",
+                    " )",
+                    " ),",
+                    "use_parent = TRUE,",
+                    "# Modify this if your config file is somewhere else",
+                    " file = app_sys(\"golem-config.yml\")",
+                    ") {",
+                    "  config::get(",
+                    "   value = value,",
+                    "   config = config,",
+                    "    file = file,",
+                    "   use_parent = use_parent",
+                    "  )",
+                    " }"
+                   )
+                    
+  writeLines(appconfig, con = file.path(paste0(path, "/R"), "app_config.R"))
+  
+  ## Prewrite tool header ------------
   url <- paste0("https://rstudio.unhcr.org/", text_list$pkg_name)
   header <- c(
     "header <- function() {",
@@ -66,7 +114,18 @@ graveler_dashboard <- function(path,...) {
     "\t) )",
     "}"
   )
-
+  
   writeLines(header, con = file.path(paste0(path, "/R"), "header.R"))
+  
+  ## File to deploy to rstudio --------------
+  appfile   <- c( "# Launch the ShinyApp (Do not remove this comment)",
+                  "# To deploy, run: rsconnect::deployApp()",
+                  "# Or use the blue button on top of this file",
+                  "pkgload::load_all(export_all = FALSE,helpers = FALSE,attach_testthat = FALSE)",
+                  "options( \"golem.app.prod\" = TRUE)",
+                  paste0( text_list$pkg_name,"::run_app() # add parameters here (if any)" )
+  )
+  
+  writeLines(appfile, con = file.path(paste0(path, ""), "app.R"))
 
 }
