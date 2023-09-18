@@ -1,15 +1,4 @@
 #' The application User-Interface
-#' 
-#' This function is internally used to manage the UI entry point
-#' 
-#' @param request Internal parameter for `{shiny}`.
-#'     DO NOT REMOVE.
-#' @import shiny
-#' @noRd
-#' @keywords internal
-
-
-#' UI
 #'
 #' This function is internally used to manage the UI entry point
 #'
