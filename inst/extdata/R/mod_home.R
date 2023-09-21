@@ -43,7 +43,7 @@ mod_home_ui <- function(id) {
 		    tags$a(href="https://edouard-legoupil.github.io/graveler/",
 		           "{graveler}" ),
 		    " -- report ",
-		    tags$a(href="https://github.com/Edouard-Legoupil/graveler/issues",
+		    tags$a(href="https://github.com/Edouard-Legoupil/graveler/issues/new/choose",
 		           "issues here." ,
 		    ),
 		    style = "font-size: 10px")

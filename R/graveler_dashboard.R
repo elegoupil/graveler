@@ -105,15 +105,17 @@ graveler_dashboard <- function(path,...) {
   url <- paste0("https://rstudio.unhcr.org/", text_list$pkg_name)
   header <- c(
     "header <- function() {",
-    "\t shinydashboard::dashboardHeader(",
-    "\t\t title = tagList(",
-    paste0("\t\t\tspan(class = 'logo-lg',a(\"", text_list$title, "\",style=\"color:white !important\",href='", url, "')),") ,
+    "\t shinydashboard::dashboardHeader( title =  '", paste0(  text_list$title),  "') ", 
+    "}"
+  )
+    
+    # "\t\t title = tagList(",
+    # paste0("\t\t\tspan(class = 'logo-lg',a(\"", text_list$title, "\",style=\"color:white !important\",href='", url, "')),") ,
     #paste0("\t\t\ta(style = \"margin: -15px\", href='", url ,"', img(src = \"www/graveler_sprite.svg\", width=\"225%\"))"),
     #"\t\t),",
     #"\t\tcontrolbarIcon = \"gear\"",
-    "\t) )",
-    "}"
-  )
+   # "\t) )",
+  #  "}"
   
   writeLines(header, con = file.path(paste0(path, "/R"), "header.R"))
   
