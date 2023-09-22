@@ -17,7 +17,7 @@ Imports:
     yesno
 Remotes: 
     edouard-legoupil/unhcrshiny,
-    vidonne/unhcrthemes
+    vidonne/unhcrthemes,
     vidonne/unhcrtemplate
 Encoding: UTF-8
 LazyData: true
