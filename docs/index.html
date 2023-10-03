@@ -5,16 +5,16 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="description" content="Wrapper for {golem} that automates dashboard file generation. ">
+<meta name="description" content="Wrapper for {golem} that automates dashboard file generation.">
 <title>Builds standardized, modular shiny dashboard frameworks • graveler</title>
 <script src="deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="deps/bootstrap-5.2.2/bootstrap.min.css" rel="stylesheet">
-<script src="deps/bootstrap-5.2.2/bootstrap.bundle.min.js"></script><link href="deps/Lato-0.4.6/font.css" rel="stylesheet">
-<link href="deps/Source_Code_Pro-0.4.6/font.css" rel="stylesheet">
+<script src="deps/bootstrap-5.2.2/bootstrap.bundle.min.js"></script><link href="deps/Lato-0.4.7/font.css" rel="stylesheet">
+<link href="deps/Source_Code_Pro-0.4.7/font.css" rel="stylesheet">
 <!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- bootstrap-toc --><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v1.0.1/dist/bootstrap-toc.min.js" integrity="sha256-4veVQbu7//Lk5TSmc7YV48MxtMy98e26cf5MrgZYnwo=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="Builds standardized, modular shiny dashboard frameworks">
-<meta property="og:description" content="Wrapper for {golem} that automates dashboard file generation. ">
+<meta property="og:description" content="Wrapper for {golem} that automates dashboard file generation.">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -39,6 +39,12 @@
       <ul class="navbar-nav me-auto">
 <li class="nav-item">
   <a class="nav-link" href="reference/index.html">Reference</a>
+</li>
+<li class="nav-item dropdown">
+  <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
+  <div class="dropdown-menu" aria-labelledby="dropdown-articles">
+    <a class="dropdown-item" href="articles/learn_from_examples.html">Learning from Examples</a>
+  </div>
 </li>
       </ul>
 <form class="form-inline my-2 my-lg-0" role="search">
@@ -104,7 +110,7 @@
 <p>If you are on windows, you will need to install <a href="https://cran.r-project.org/bin/windows/Rtools/" class="external-link">Rtools</a> on the top of <a href="https://cran.rstudio.com/" class="external-link">R</a> <a href="https://posit.co/download/rstudio-desktop/" class="external-link">Rstudio</a></p>
 <p>Then you can paste the following to install the package:</p>
 <pre><code><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"pak"</span><span class="op">)</span></span>
-<span><span class="fu">pak</span><span class="fu">::</span><span class="fu"><a href="http://pak.r-lib.org/reference/pkg_install.html" class="external-link">pkg_install</a></span><span class="op">(</span><span class="st">"edouard-legoupil/graveler"</span><span class="op">)</span></span></code></pre>
+<span><span class="fu">pak</span><span class="fu">::</span><span class="fu"><a href="https://pak.r-lib.org/reference/pkg_install.html" class="external-link">pkg_install</a></span><span class="op">(</span><span class="st">"edouard-legoupil/graveler"</span><span class="op">)</span></span></code></pre>
 <p>Once the package is installed on your Rstudio, follow the steps below:</p>
 </div>
 <div class="section level3">
@@ -304,55 +310,11 @@
 <ul>
 <li><p>Beware of token and password - see above on the usage of environment variable</p></li>
 <li><p>favor publication from github as much as possible. Build and publish your package documentation on github with <code><a href="https://pkgdown.r-lib.org/reference/build_site.html" class="external-link">pkgdown::build_site()</a></code></p></li>
-<li><p>share publication right with colleagues so that there’s a back up plan to update the app if needed</p></li>
-<li><p>once the application is published on the Rstudio server, document the name of the github repo for your app within Rstudio Connect metadata and use a specific URL before disseminating the app</p></li>
+<li><p>Share publication right with colleagues so that there’s a back up plan to update the app if needed</p></li>
+<li><p>Once the application is published on the Rstudio server, document the name of the github repo for your app within Rstudio Connect metadata and use a specific URL before disseminating the app</p></li>
+<li><p>Do not hesitate to reach out to me for peer review! :)</p></li>
 </ul>
 </div>
-</div>
-<div class="section level2">
-<h2 id="learn-from-examples">Learn from Examples!<a class="anchor" aria-label="anchor" href="#learn-from-examples"></a>
-</h2>
-<p>Before you start, scope well your project. Dashboard are not always the best way to present information. Think of a simple comparison: when you drive your car, your dashboard is giving you the key information you need so that you can make a decision based on a knowledge you already have (<em>i.e., you already know how to interpret the information of the various gauges</em>). If you rather try to present information, in order to build knowledge, then creating a notebook with narrative to explain the data will be likely more effective.</p>
-<p>You can see check typical examples of dashboard within the package: one for protection monitoring and one for response monitoring. They were prepared with dummy data for the famous country called <a href="Ruritania">Ruritania</a></p>
-<p>As a <em>rule of thumb</em>, a good dashboard should remain simple to be effective (aka not more than 7 charts, and not more than 7 categories by charts).</p>
-<p>To help in the design process, the package includes examples of typical charts that can be assembled together both for Response and Protection Monitoring. The file structure is located in the <a href="https://github.com/Edouard-Legoupil/graveler/tree/main/inst/examples" class="external-link">examples folder</a>.</p>
-<div class="section level5">
-<h5 id="example-1-protection-monitoring">Example 1: Protection Monitoring<a class="anchor" aria-label="anchor" href="#example-1-protection-monitoring"></a>
-</h5>
-<p>Typically the content of a Protection Monitoring Dashboard allows to quickly identify the situation of basic rights in order to pilot the activities on the ground. It should complement (<em>and not replace!</em>) an in-depth protection analysis based on the protection risk equation. It would include:</p>
-<ol style="list-style-type: decimal">
-<li><p><strong>Exposure: Vulnerable Populations:</strong> Treemap displaying the percentage of different vulnerable populations (e.g., children, women, elderly, disabled) affected by protection concerns.</p></li>
-<li><p><strong>Thread: Incident Types and Frequency:</strong> Line chart illustrating the trend in the frequency of of different types of protection incidents (e.g., violence, exploitation, discrimination) over time, allowing for identification of spikes or patterns.</p></li>
-<li><p><strong>Coping: Response Coverage:</strong> Donut chart showcasing the coverage and reach of protection interventions by different implementing organizations or sectors.</p></li>
-<li><p><strong>Compliance with Protection Standards:</strong> Radar chart comparing the adherence to different protection standards (e.g., human rights principles, international humanitarian law) by various implementing actors or sectors.</p></li>
-<li><p><strong>Protection Advocacy Challenges:</strong> Gantt chart depicting the timeline of identified advocacy and the status of efforts to address them, allowing for tracking progress and resolution.</p></li>
-<li><p><strong>Key Performance Indicators (KPIs):</strong> Highlighted numbers specific KPIs related to the protection response (e.g., number of cases resolved, number of survivors accessing support services).</p></li>
-<li><p><strong>Geographic Distribution:</strong> Choropleth map presenting the spatial distribution of protection incidents, vulnerability, or response activities, allowing for visual identification of hotspots or areas in need.</p></li>
-</ol>
-<pre><code>graveler::_example_protection()</code></pre>
-<p><img src="reference/figures/empty.png" width="551"></p>
-</div>
-<div class="section level5">
-<h5 id="example-2-response-monitoring">Example 2: Response Monitoring<a class="anchor" aria-label="anchor" href="#example-2-response-monitoring"></a>
-</h5>
-<p>Typically the content of a Response Monitoring Dashboard allows to ensure that the right activities are done right. It would typically include:</p>
-<ol style="list-style-type: decimal">
-<li><p><strong>Needs Assessment and Population:</strong> Population pyramid illustrating the demographic composition of the affected population (e.g., age, gender) including specific needs to inform targeted response planning.</p></li>
-<li><p><strong>Resources Allocation:</strong> Heatmap representing the allocation of resources (e.g., funding, personnel, supplies) by response activities, allowing for visual identification of areas with high or low response coverage.</p></li>
-<li><p><strong>Key Performance Indicators (KPIs):</strong> Gauge chart indicating the achievement of predetermined targets or benchmarks for the response activities.</p></li>
-<li><p><strong>Funding Management:</strong> Staked Bar chart comparing the planned versus actual resource allocations to identify discrepancies or gaps in resource management.</p></li>
-<li><p><strong>Coordination and Partnership:</strong> Sankey diagram showing the collaboration and partnerships among different response organizations or clusters, measuring the frequency of coordination meetings or joint planning efforts</p></li>
-<li><p><strong>Impact and Outcome:</strong> Bubble chart showcasing the correlation between response interventions and key outcomes or impact indicators (e.g., improved health indicators, increased access to education).</p></li>
-<li><p><strong>Alert:</strong> Area chart providing real-time updates on key indicators, allowing for immediate identification of emerging trends or shifts in the humanitarian situation (for instance average assistance enrollment processing time).</p></li>
-</ol>
-<pre><code>graveler::_example_response()</code></pre>
-<p><img src="reference/figures/empty.png" width="551"></p>
-</div>
-</div>
-<div class="section level2">
-<h2 id="id_-register-your-dashbaord">.. Register your dashbaord!<a class="anchor" aria-label="anchor" href="#id_-register-your-dashbaord"></a>
-</h2>
-<p>On UNHCR Data Portal: <a href="https://data.unhcr.org/en/dataviz" class="external-link">https://data.unhcr.org/en/dataviz</a></p>
 </div>
 </div>
   </main><aside class="col-md-3"><div class="links">

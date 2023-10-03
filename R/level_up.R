@@ -1,6 +1,11 @@
 #' Graveler Module
 #'
 #' Creates module of the specified name
+#' 
+#' @param name name 
+#' @param pkg package name 
+#' @param open boolean
+#' @param dir_create boolean
 #' @import golem
 #' @import cli
 #'

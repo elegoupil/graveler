@@ -6,6 +6,11 @@
 \usage{
 graveler_dashboard(path, ...)
 }
+\arguments{
+\item{path}{path to file}
+
+\item{...}{other parameters}
+}
 \description{
 Creates golem directory and header from template info
 }

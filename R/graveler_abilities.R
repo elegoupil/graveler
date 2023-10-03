@@ -1,15 +1,22 @@
-library(cli)
-dir_not_exist <- Negate(dir.exists)
-file_not_exist <- Negate(file.exists)
+#library(cli)
+#file_not_exist <- Negate(file.exists)
 
-copy_me <- function(x){write.table(x, "clipboard", sep="\t", row.names=FALSE)}
+#' @title copy_me 
+#' @importFrom utils write.table
+#' @noRd
+#' @keywords internal
+copy_me <- function(x){
+  write.table(x, "clipboard", sep="\t", row.names=FALSE)
+  }
 
-
-create_dir_if_needed <- function(
-  path,
-  auto_create
-){
+#' @title create_dir_if_needed
+#' @importFrom yesno yesno
+#' @noRd
+#' @keywords internal
+create_dir_if_needed <- function(  path,
+                                   auto_create){
   # TRUE if path doesn't exist
+  dir_not_exist <- Negate(dir.exists)
   dir_not_there <- dir_not_exist(path)
   go_create <- TRUE
   # If not exists, maybe create it
@@ -32,10 +39,13 @@ create_dir_if_needed <- function(
       )
     }
   }
-
   return(go_create)
 }
 
+#' @title create_dir_if_needed
+#' @importFrom yesno yesno
+#' @noRd
+#' @keywords internal
 check_file_exist <- function(file){
   res <- TRUE
   if (file.exists(file)){
@@ -44,6 +54,10 @@ check_file_exist <- function(file){
   return(res)
 }
 
+#' @title check_dir_exist
+#' @importFrom yesno yesno
+#' @noRd
+#' @keywords internal
 check_dir_exist <- function(dir){
   res <- TRUE
   if (!dir.exists(dir)){
@@ -52,23 +66,35 @@ check_dir_exist <- function(dir){
   return(res)
 }
 
-# internal
+#' @title replace_word
+#' @noRd
+#' @keywords internal
 replace_word <- function(file,pattern, replace){
   suppressWarnings( tx  <- readLines(file) )
-  tx2  <- gsub(pattern = pattern, replacement = replace, x = tx)
+  tx2  <- gsub(pattern = pattern, 
+               replacement = replace, 
+               x = tx)
   writeLines(tx2, con=file)
 }
 
+#' @title cat_green_tick
+#' @importFrom cli cat_bullet
+#' @noRd
+#' @keywords internal
 cat_green_tick <- function(...){
-  cat_bullet(
+  cli::cat_bullet(
     ...,
     bullet = "tick",
     bullet_col = "green"
   )
 }
 
+#' @title cat_red_bullet
+#' @importFrom cli cat_bullet
+#' @noRd
+#' @keywords internal
 cat_red_bullet <- function(...){
-  cat_bullet(
+  cli::cat_bullet(
     ...,
     bullet = "bullet",
     bullet_col = "red"

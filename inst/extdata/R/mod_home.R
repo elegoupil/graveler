@@ -1,5 +1,4 @@
 # Module UI Home
-
 #' @title mod_home_ui and mod_home_server
 #' @description A shiny module.
 #' @import shiny

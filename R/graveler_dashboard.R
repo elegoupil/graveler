@@ -1,9 +1,12 @@
 #' Golem dashboard backend
 #'
 #' Creates golem directory and header from template info
+#' 
+#' @param path path to file
+#' @param ... other parameters
 #'
 #' @export
-graveler_dashboard <- function(path,...) {
+graveler_dashboard <- function(path, ...) {
   # ensure path exists
   dir.create(path, recursive = TRUE, showWarnings = FALSE)
 

@@ -292,7 +292,8 @@ To republish changes in the future, you simply merge your code to github and the
  
  * favor publication from github as much as possible. Build and publish your package documentation on github with `pkgdown::build_site()`   
  
- * share publication right with colleagues so that there's a back up plan to update the app if needed  
+ * Share publication right with colleagues so that there's a back up plan to update the app if needed  
  
- * once the application is published on the Rstudio server, document the name of the github repo for your app within Rstudio Connect metadata and use a specific URL before disseminating the app 
+ * Once the application is published on the Rstudio server, document the name of the github repo for your app within Rstudio Connect metadata and use a specific URL before disseminating the app 
  
+ * Do not hesitate to reach out to me for peer review! :)

@@ -6,6 +6,15 @@
 \usage{
 level_up(name, pkg = get_graveler_wd(), open = TRUE, dir_create = TRUE)
 }
+\arguments{
+\item{name}{name}
+
+\item{pkg}{package name}
+
+\item{open}{boolean}
+
+\item{dir_create}{boolean}
+}
 \description{
 Creates module of the specified name
 }
