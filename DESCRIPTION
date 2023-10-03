@@ -3,22 +3,33 @@ Title: Builds standardized, modular shiny dashboard frameworks
 Version: 0.75.1
 Author: acarlson <acarlson@snapfinance.com> [aut, cre]
 Maintainer: Edouard Legoupil <legoupil@unhcr.org>
-Description: Wrapper for {golem} that automates dashboard file generation. 
+Description: Wrapper for {golem} that automates dashboard file generation.
 License: MIT + file LICENSE
 URL: https://github.com/edouard-legoupil/graveler
 Imports:
     cli,
+    config,
     glue,
     golem (>= 0.3.1),
+    pak,
+    pkgload,
+    rsconnect,
     rstudioapi,
     shiny,
     shinydashboard,
-    shinydashboardPlus (>= 0.7.5),
+    usethis,
     yesno
+Suggests: 
+    knitr,
+    rmarkdown,
+    testthat
+VignetteBuilder: 
+    knitr
 Remotes: 
     edouard-legoupil/unhcrshiny,
-    vidonne/unhcrthemes,
-    vidonne/unhcrtemplate
+    vidonne/unhcrtemplate,
+    vidonne/unhcrthemes
+Config/fusen/version: 0.5.2
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 7.2.3 
+RoxygenNote: 7.2.3.9000

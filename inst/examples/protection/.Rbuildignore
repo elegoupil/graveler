@@ -2,7 +2,9 @@
 ^\.Rproj\.user$
 ^LICENSE\.md$
 ^README\.Rmd$
+^app\.R$
 ^_pkgdown\.yml$
 ^docs$
 ^dev$
-^graveler\.Rproj$
+^rsconnect$
+^.github$

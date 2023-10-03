@@ -1,0 +1,364 @@
+---
+title: "Function documentation"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r development, include=FALSE}
+library(testthat)
+```
+
+```{r development-load}
+# Load already included functions if relevant
+pkgload::load_all(export_all = FALSE)
+```
+
+<!--
+ For each fo the function you need, add FUSEN chunk through the Rstudio add-in " add {fusen} chunks"
+ -->
+
+# Protection Monitoring
+
+Typically the content of a Protection Monitoring Dashboard allows to quickly identify the situation of basic rights in order to pilot the activities on the ground. It should complement (and not replace!) an in-depth protection analysis based on the protection risk equation. It could include the following default charts:
+
+## Exposure:  plot_vulnerable_profile
+
+Stacked bar chart displaying the percentage or distribution of different vulnerable populations (e.g., children, women, elderly, disabled) affected by protection concerns.
+ 
+```{r function-plot_vulnerable_profile}
+#' Title
+#' 
+#' Vulnerable Populations: Stacked bar chart displaying the percentage or distribution of different vulnerable populations (e.g., children, women, elderly, disabled) affected by protection concerns.
+#' 
+#' @parama vulnerable_data vulnerable_data 
+#' 
+#' @return
+#' 
+#' @export
+plot_vulnerable_profile <- function(vulnerable_data){
+  
+  # Create a stacked bar chart
+p <- ggplot(vulnerable_data, aes(x = "", y = Percentage, fill = Population_Group)) +
+  geom_bar(stat = "identity", width = 1) +
+  geom_text(aes(label = paste0(Percentage, "%")), position = position_stack(vjust = 0.5), color = "white", size = 4) +
+  coord_polar(theta = "y") +
+  labs(title = "Distribution of Vulnerable Populations",
+       x = NULL,
+       y = NULL) +
+  theme_void() +
+  theme(legend.position = "bottom")
+
+return(p)
+    
+}
+```
+  
+```{r example-plot_vulnerable_profile}
+ 
+# Create dummy data
+vulnerable_data <- data.frame(
+  Population_Group = c("Children", "Women", "Elderly", "Disabled"),
+  Percentage = c(30, 40, 20, 10)
+)
+
+# Calculate cumulative percentage for stacked bar chart
+vulnerable_data$Cumulative_Percentage <- cumsum(vulnerable_data$Percentage)
+
+
+
+
+plot_vulnerable_profile(vulnerable_data)
+```
+  
+```{r tests-plot_vulnerable_profile}
+test_that("plot_vulnerable_profile works", {
+  expect_true(inherits(plot_vulnerable_profile, "function")) 
+})
+```
+
+
+## Thread: plot_incident_trend
+
+Incident Types and Frequency: Line chart illustrating the trend in the frequency of of different types of protection incidents (e.g., violence, exploitation, discrimination) over time, allowing for identification of spikes or patterns.
+
+```{r function-plot_incident_trend}
+#' plot_incident_trend
+#' 
+#' Incident Types and Frequency: Line chart illustrating the trend in the frequency of of different types of protection incidents (e.g., violence, exploitation, discrimination) over time, allowing for identification of spikes or patterns.
+#' 
+#' @param incident_data incident_data
+#' 
+#' @return
+#' 
+#' @export
+plot_incident_trend <- function(incident_data){
+  
+# Create a line chart
+p <- ggplot(incident_data, aes(x = Time_Period, y = Incident_Count)) +
+  geom_line() +
+  geom_point() +
+  labs(title = "Trend in Frequency of Protection Incidents",
+       x = "Time Period",
+       y = "Incident Count") +
+  theme_minimal()
+
+return(p)
+    
+}
+```
+  
+```{r example-plot_incident_trend}
+
+
+#  Line chart illustrating the trend in the frequency of protection incidents over time, allowing for identification of spikes or patterns
+# Create dummy data
+incident_data <- data.frame(
+  Time_Period = seq(as.Date("2023-01-01"), as.Date("2023-12-31"), by = "month"),
+  Incident_Count = c(20, 25, 30, 35, 40, 50, 55, 60, 65, 70, 75, 80)
+)
+
+plot_incident_trend(incident_data)
+```
+  
+```{r tests-plot_incident_trend}
+test_that("plot_incident_trend works", {
+  expect_true(inherits(plot_incident_trend, "function")) 
+})
+```
+  
+
+
+
+## Coping: Response Coverage: plot_response_coverage
+
+Donut chart showcasing the coverage and reach of protection interventions by different implementing organizations or sectors.
+    
+```{r function-plot_response_coverage}
+#' plot_response_coverage
+#' 
+#' Donut chart showcasing the coverage and reach of protection interventions by different implementing organizations or sectors.
+#' 
+#' @return
+#' 
+#' @export
+plot_response_coverage <- function(){
+    
+}
+```
+  
+```{r example-plot_response_coverage}
+plot_response_coverage()
+```
+  
+```{r tests-plot_response_coverage}
+test_that("plot_response_coverage works", {
+  expect_true(inherits(plot_response_coverage, "function")) 
+})
+```
+  
+
+##  Compliance with Protection Standards: plot_protection_standard
+
+Radar chart comparing the adherence to different protection standards (e.g., human rights principles, international humanitarian law) by various implementing actors or sectors.
+
+    
+```{r function-plot_protection_standard}
+#' plot_protection_standard
+#' 
+#' Radar chart comparing the adherence to different protection standards (e.g., human rights principles, international humanitarian law) by various implementing actors or sectors.
+#' 
+#' @return
+#' 
+#' @export
+plot_protection_standard <- function(){
+    
+}
+```
+  
+```{r example-plot_protection_standard}
+plot_protection_standard()
+```
+  
+```{r tests-plot_protection_standard}
+test_that("plot_protection_standard works", {
+  expect_true(inherits(plot_protection_standard, "function")) 
+})
+```
+
+## Protection Advocacy Challenges: plot_advocacy_steps
+
+Gantt chart depicting the timeline of identified advocacy and the status of efforts to address them, allowing for tracking progress and resolution.
+    
+```{r function-plot_advocacy_steps}
+#' plot_advocacy_steps
+#' 
+#' Gantt chart depicting the timeline of identified advocacy and the status of efforts to address them, allowing for tracking progress and resolution.
+#' 
+#' @return
+#' 
+#' @export
+plot_advocacy_steps <- function(){
+    
+}
+```
+  
+```{r example-plot_advocacy_steps}
+plot_advocacy_steps()
+```
+  
+```{r tests-plot_advocacy_steps}
+test_that("plot_advocacy_steps works", {
+  expect_true(inherits(plot_advocacy_steps, "function")) 
+})
+```
+  
+
+
+##  Key Performance Indicators (KPIs): Highlighted numbers specific KPIs related to the protection response (e.g., number of cases resolved, number of survivors accessing support services).
+
+##  Geographic Distribution: Choropleth map presenting the spatial distribution of protection incidents, vulnerability, or response activities, allowing for visual identification of hotspots or areas in need.
+
+
+
+
+<!--
+ below is a default chunk to create and document your run_app function
+-->
+
+# run_app
+
+
+<!--
+Create a chunk for the core of the function
+
+- The chunk needs to be named `function` at least
+- It contains the code of a documented function
+- The chunk can also be named `function-my_function` to make it easily
+findable in your Rmd
+- Let the `@examples` part empty, and use the next `examples` chunk instead to present reproducible examples
+
+After inflating the template
+
+-  This function code will automatically be added in a new file in the "R/" directory
+-->
+    
+```{r function-run_app}
+#' Run the Shiny Application
+#' 
+#' 
+#' @param onStart A function that will be called before the app is actually run.
+#' This is only needed for \code{shinyAppObj}, since in the \code{shinyAppDir}
+#' case, a \code{global.R} file can be used for this purpose.
+
+#' @param options Named options that should be passed to the \code{runApp} call
+#' (these can be any of the following: "port", "launch.browser", "host", "quiet",
+#' "display.mode" and "test.mode"). You can also specify \code{width} and
+#' \code{height} parameters which provide a hint to the embedding environment
+#' about the ideal height/width for the app.
+
+#' @param enableBookmarking Can be one of \code{"url"}, \code{"server"}, or
+#' \code{"disable"}. The default value, \code{NULL}, will respect the setting from
+#' any previous calls to  \code{\link[shiny:enableBookmarking]{enableBookmarking()}}. See 
+#' #' \code{\link[shiny:enableBookmarking]{enableBookmarking()}}
+#' for more information on bookmarking your app.
+
+#' @param uiPattern A regular expression that will be applied to each \code{GET}
+#' request to determine whether the \code{ui} should be used to handle the
+#' request. Note that the entire request path must match the regular
+#' expression in order for the match to be considered successful.
+#' 
+#' 
+#' @param ... arguments to pass to golem_opts.
+#' See `?golem::get_golem_options` for more details.
+#' @inheritParams shiny::shinyApp
+#'
+#' @importFrom shiny shinyApp
+#' @importFrom golem with_golem_options
+#' 
+#' @return a shiny app
+#' 
+#' @export
+
+run_app <- function(
+    onStart = NULL,
+    options = list(),
+    enableBookmarking = NULL,
+    uiPattern = "/",
+    ...
+) {
+  with_golem_options(
+    app = shinyApp(
+      ui = app_ui,
+      server = app_server,
+      onStart = onStart,
+      options = options,
+      enableBookmarking = enableBookmarking,
+      uiPattern = uiPattern
+    ),
+    golem_opts = list(...)
+  )
+}
+
+```
+
+<!--
+Create a chunk with an example of use for your function
+
+- The chunk needs to be named `examples` at least
+- It contains working examples of your function
+- The chunk is better be named `examples-my_median` to be handled
+correctly when inflated as a vignette
+
+After inflating the template
+
+-  This example will automatically be added in the '@examples' part of our function above in the "R/" directory
+- This example will automatically be added in the vignette created from this Rmd template
+-->
+
+```{r example-run_app}
+# run_app()
+```
+
+<!--
+Create a chunk with a test of use for your function
+
+- The chunk needs to be named `tests` at least
+- It contains working tests of your function
+- The chunk is better be named `tests-my_median` to be handled
+correctly when inflated as a vignette
+
+After inflating the template
+
+-  This test code will automatically be added in the "tests/testthat/" directory
+-->
+ 
+```{r tests-run_app}
+# test_that("run_app works", {
+#   expect_true(inherits(run_app, "function")) 
+# })
+```
+  
+
+
+
+<!--
+ Once you have created your back office functions , run the next chunk to install and package them
+
+# There can be development actions
+
+Create a chunk with 'development' actions
+
+- The chunk needs to be named `development` or `dev`
+- It contains functions that are used for package development only
+- Note that you may want to store most of these functions in the 0-dev_history.Rmd file
+
+These are only included in the present flat template file, their content will not be part of the package anywhere else.
+-->
+
+```{r development-inflate, eval=FALSE}
+# Run but keep eval=FALSE to avoid infinite loop
+# Execute in the console directly
+fusen::inflate(flat_file = "dev/function_documentation.Rmd", vignette_name = "Development")
+```
+

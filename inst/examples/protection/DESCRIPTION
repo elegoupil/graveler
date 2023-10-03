@@ -1,0 +1,10 @@
+Package: protection
+Title: protection
+Description: Fill a longer description of your package here.
+Version: 0.0.900
+Authors@R: c( person("Edouard", "Legoupil", , "legoupil@unhcr.org", role = c("aut", "cre")))
+Maintainer:Edouard Legoupil <legoupil@unhcr.org>
+URL: https://github.com/unhcr-americas/protection
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
