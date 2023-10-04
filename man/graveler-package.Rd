@@ -4,7 +4,7 @@
 \name{graveler-package}
 \alias{graveler}
 \alias{graveler-package}
-\title{graveler: Builds standardized, modular shiny dashboard frameworks}
+\title{graveler: Builds standardized, modular shiny dashboard with a UNHCR style}
 \description{
 Wrapper for {golem} that automates dashboard file generation.
 }

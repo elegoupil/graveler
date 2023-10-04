@@ -1,5 +1,5 @@
 Package: graveler
-Title: Builds standardized, modular shiny dashboard frameworks
+Title: Builds standardized, modular shiny dashboard with a UNHCR style
 Version: 0.75.1
 Author: acarlson <acarlson@snapfinance.com> [aut, cre]
 Maintainer: Edouard Legoupil <legoupil@unhcr.org>

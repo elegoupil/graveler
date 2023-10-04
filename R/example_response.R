@@ -1,6 +1,7 @@
-#' @title Launch a small graveler example for response dashboard
+#' @title Launch a small graveler example for response tracking dashboard
 #'
-#' @description A gallery of widgets available in the package.
+#' @description An illustration of graveler applied to a humanitarian response 
+#'             tracking dashboard
 #'
 #' @importFrom shiny shinyAppDir
 #' @export

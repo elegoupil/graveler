@@ -1,6 +1,6 @@
 # {graveler}
 
-> Build standardized, branded, modular dashboards to deploy on [UNHCR Rstudio Connect Server](http://rstudio.unhcr.org)
+> Build standardized, branded, modular dashboards to deploy on [UNHCR Posit Connect Server](http://rstudio.unhcr.org)
 
 ## Overview
 
@@ -8,7 +8,7 @@ This [{graveler} fork](https://github.com/ghcarlalan/graveler) is an __Rstudio P
 
 At a high level, {golem} turns your shiny dashboards into a package framework and allows you to build and deploy them almost exactly as you would for an R package. This allows for better documentation, testing, robustness, etc. {graveler} abstracts away its technical side and set defaults for the development workflow of UNHCR dashboards.
 
-You shall then be able to make a working dashboard in a few minutes!
+You shall then be able to create an initial working dashboard in a few minutes!
 
 ## Dashboard in Shiny
 
@@ -290,10 +290,14 @@ To republish changes in the future, you simply merge your code to github and the
 
  * Beware of token and password - see above on the usage of environment variable 
  
- * favor publication from github as much as possible. Build and publish your package documentation on github with `pkgdown::build_site()`   
+ * Favor publication from github as much as possible. Build and publish your package documentation on github with `pkgdown::build_site()`   
  
- * Share publication right with colleagues so that there's a back up plan to update the app if needed  
+ * Share publication access rights with colleagues so that there's a back up plan to update the app if needed  
  
- * Once the application is published on the Rstudio server, document the name of the github repo for your app within Rstudio Connect metadata and use a specific URL before disseminating the app 
+ * Once the application is published on the Posti Connect server, document the name of the github repo for your app within Rstudio Connect metadata and use a specific URL before disseminating the app 
  
  * Do not hesitate to reach out to me for peer review! :)
+
+## Acknowledgement
+
+Thanks to [ThinkR](https://github.com/ThinkR-open/) for the packages on which this framework is built from.

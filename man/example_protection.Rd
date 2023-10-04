@@ -2,12 +2,13 @@
 % Please edit documentation in R/example_protection.R
 \name{example_protection}
 \alias{example_protection}
-\title{Launch a small graveler example  for protection dashboard}
+\title{Launch a small graveler example  for protection monitoring dashboard}
 \usage{
 example_protection()
 }
 \description{
-A gallery of widgets available in the package.
+An illustration of graveler applied to a  humanitarian protection
+            monitoring dashboard
 }
 \examples{
 if (interactive()) {

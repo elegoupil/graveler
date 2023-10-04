@@ -1,7 +1,8 @@
-#' @title Launch a small graveler example  for protection dashboard
+#' @title Launch a small graveler example  for protection monitoring dashboard
 #'
-#' @description A gallery of widgets available in the package.
-#'
+#' @description An illustration of graveler applied to a  humanitarian protection
+#'             monitoring dashboard
+#'             
 #' @importFrom shiny shinyAppDir
 #' @export
 #'
