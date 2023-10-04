@@ -1,10 +1,25 @@
 Package: protection
 Title: protection
-Description: Fill a longer description of your package here.
 Version: 0.0.900
-Authors@R: c( person("Edouard", "Legoupil", , "legoupil@unhcr.org", role = c("aut", "cre")))
-Maintainer:Edouard Legoupil <legoupil@unhcr.org>
-URL: https://github.com/unhcr-americas/protection
+Authors@R: 
+    person("Edouard", "Legoupil", , "legoupil@unhcr.org", role = c("aut", "cre"))
+Maintainer: Edouard Legoupil <legoupil@unhcr.org>
+Description: Fill a longer description of your package here.
 License: MIT + file LICENSE
+URL: https://github.com/unhcr-americas/protection
+Imports: 
+    config,
+    golem,
+    shiny,
+    shinydashboard,
+    unhcrshiny
+Suggests: 
+    knitr,
+    rmarkdown,
+    testthat
+VignetteBuilder: 
+    knitr
+Config/fusen/version: 0.5.2
 Encoding: UTF-8
 LazyData: true
+RoxygenNote: 7.2.3.9000

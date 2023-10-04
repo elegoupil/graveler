@@ -28,7 +28,8 @@ VignetteBuilder:
 Remotes: 
     edouard-legoupil/unhcrshiny,
     vidonne/unhcrtemplate,
-    vidonne/unhcrthemes
+    vidonne/unhcrthemes,
+    thinkr-open/checkhelper
 Config/fusen/version: 0.5.2
 Encoding: UTF-8
 LazyData: true

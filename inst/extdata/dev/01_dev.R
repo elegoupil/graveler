@@ -10,7 +10,7 @@ attachment::att_amend_desc()
 
 ### Initial set up for Documentation ----------
 
-## Connect to github to enable documentation and collaboratio
+## Connect to github to enable documentation and collaboration
 rstudioapi::navigateToFile("dev/githublink.R")
 ## Set up the README 
 usethis::use_readme_rmd(open = FALSE)
@@ -21,17 +21,18 @@ devtools::build_readme()
 
 ### Back office ----------
 
-## Go to function_documentation.Rmd to build your back office functions with Fusen
+## Go to function_documentation.Rmd to build back office functions with Fusen
 rstudioapi::navigateToFile("dev/function_documentation.Rmd")
 ## Get your function and then build your package with 
-fusen::inflate(flat_file = "dev/function_documentation.Rmd", vignette_name = "Development")
+fusen::inflate(flat_file = "dev/function_documentation.Rmd", 
+               vignette_name = "Development")
 
 # Your goal is to to get :
 #  > 0 errors ✔ | 0 warnings ✔ | 0 notes ✔
 
 ## Set up a globals.R with
 # remotes::install_github("thinkr-open/checkhelper")
-# checkhelper::print_globals()
+checkhelper::print_globals()
 
 ## Build the html package documentation for your utilities functions   
 pkgdown::build_site()
@@ -55,5 +56,5 @@ golem::run_dev()
 ## Add manifest for CI/CD 
 rsconnect::writeManifest()
 ## For deployment use the app.R file at the root of your project and then use 
-# the deployment button in blue to publish your project http://rstudio.unhcr.org 
+# the deployment button in blue to publish the project http://rstudio.unhcr.org 
 

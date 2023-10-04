@@ -19,22 +19,14 @@ mod_home_ui <- function(id) {
 		  ),
 		  br(),
 		  ### Then a short explainer
-		  p(paste("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+		  p("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
 		  eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
 		  minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
 		  ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
 		  velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-		  cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."),
+		  cupidatat non proident, sunt in culpa qui officia deserunt mollit anim
+		  id est laborum.",
 		    style = "font-size: 20px"),
-		  br(),
-		  fluidRow(
-		      actionButton(NS(id, "go_to_firstmod"),
-		                   label = "Start Exploring",
-		                   width = "150px",
-		                   style='font-size: 16px; color: #18375F',
-		                   icon = icon("chevron-right")),
-		      style = "font-size: 18px; text-align: right;"
-		    ),
 		  br(),
 		  br(),
 		  p(tags$i( class = "fa fa-github"),
@@ -58,14 +50,7 @@ mod_home_ui <- function(id) {
 
 mod_home_server <- function(input, output, session) {
 	ns <- session$ns
-	# This create the links for the button that allow to go to the next module
-	observeEvent(input$go_to_firstmod, {
-	  shinydashboard::updateTabItems(
-	    session = parent_session,
-	    inputId = "tab_selected",
-	    selected = "firstmod"
-	  )
-	})
+
 }
 
 ## copy to body.R

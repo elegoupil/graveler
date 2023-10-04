@@ -8,6 +8,8 @@
 #' @param dir_create boolean
 #' @import golem
 #' @import cli
+#' @import glue
+#' @import rstudioapi
 #'
 #' @export
 
