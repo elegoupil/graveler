@@ -50,6 +50,8 @@ golem::run_dev()
 # Name of the module - "my_first_module"
 # graveler::level_up(name = "my_first_module") 
 
+# In case you added new libraries to be used within your app, get them registered in your namespace
+# attachment::att_amend_desc()
 
 ### Deploy the app ----------
 

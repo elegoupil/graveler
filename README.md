@@ -212,16 +212,16 @@ When inside a `{graveler}` project, running the function `level_up(name = "foo")
 
 ![](man/figures/blank_mod.png)
 
-You place your UI and server code in the `mod` file, that reflect away repeatable data manipulation or plotting functions created through your {fusen} notebook. 
+You place your UI and server code in the `mod_` file, that reflect away repeatable data manipulation or plotting functions created through your {fusen} notebook. 
 
 In general, this helps keep your module code short and tidy, and allows you to put documentation for your functions just like a package.
 
 
 #### Connection between modules and dashboard
 
-`level_up` might create your module, but you still need to tell your dashboard to include and run this module. To do so, there are three lines at the bottom you copy and paste into their appropriate files: body.R, app_server.R, and sidebar.R (uncommentted, of course).
+`level_up` might create your module, but you still need to tell your dashboard to include and run this module. To do so, there are three lines at the bottom you copy and paste into their appropriate files: `body.R`, `app_server.R`, and `sidebar.R` (un commented, of course).
 
-The body and sidebar lines need to be separated with commas if you have multiple modules, but the app_server will be individual lines like so:
+The body and sidebar lines need to be separated with commas if you have multiple modules, but the `app_server` will be individual lines like so:
 
 ![](man/figures/mod_copy.png)
 
@@ -235,8 +235,7 @@ Typically communication between modules will be required if you want to use filt
 This imply to set a specific object `reactivalues` (called per default `AppReactiveValue`) that will be consumed by all your modules.
 
 ### Customization
-
-Additional or custom libraries would be edited in the dev/01_dev.R and R/apex_libraries.R files as examples.
+ 
 
 The implementation of the brand within your plots should be done with [unhcrthemes](https://vidonne.github.io/unhcrthemes/). 
 
@@ -257,7 +256,7 @@ In order to deploy your application, the basic file have been created.
 Run the `app.R` file to launch your application locally and then click on the blue: "`publish button`"" in the top right.
 ![](man/figures/deploy.png)
 
- It will gather your dependencies, ensure the server has them installed, and then your dashboard will be viewable on RStudio Connect.
+ It will gather your dependencies, ensure the server has them installed, and then your dashboard will be view-able on RStudio Connect.
 [More info on deployement here](https://data-viz.it.wisc.edu/__docs__/admin/appendix/deployment-guide/)
 
 ### Option 2:  Publish via Github
@@ -269,7 +268,7 @@ As a general approach, it is a good practice to keep a copy of your dashboard in
 
 While more involved then simply clicking a button, git backed content will ensure your published works will align with your team's codebase and allow others to collaborate easier. Earlier, we made a `manifest.json` file at the end of the `01_dev.R` file. This creates an "image" that RStudio looks for and reproduces from github directly.
 
-To publish for the first time, you push your code to whichever repo and branch on github, then in RStudio Connect you click its blue, publish button. You then navigate to the repo and branch you just pushed to, find the manifest file. Just like before, it will gather your dependencies from the manifest, ensure the server has them installed, and then your dashboard will be viewable on RStudio Connect.
+To publish for the first time, you push your code to whichever repo and branch on github, then in RStudio Connect you click its blue, publish button. You then navigate to the repo and branch you just pushed to, find the manifest file. Just like before, it will gather your dependencies from the manifest, ensure the server has them installed, and then your dashboard will be view-able on RStudio Connect.
 
 To republish changes in the future, you simply merge your code to github and the file will automatically reflect those changes when it sees them.
 
@@ -281,7 +280,7 @@ To republish changes in the future, you simply merge your code to github and the
  
  * Share publication access rights with colleagues so that there's a back up plan to update the app if needed  
  
- * Once the application is published on the Posti Connect server, document the name of the github repo for your app within Rstudio Connect metadata and use a specific URL before disseminating the app 
+ * Once the application is published on the Posit Connect server, document the name of the github repo for your app within Rstudio Connect metadata and use a specific URL before disseminating the app 
  
  * Do not hesitate to reach out to me for peer review! :)
  
@@ -300,4 +299,5 @@ Other examples includes:
 
 ## Acknowledgement
 
+Thanks to [Alan Carlson](https://github.com/alancarlson) for the initial idea on which the package is built from.
 Thanks to [ThinkR](https://github.com/ThinkR-open/) for the packages on which this framework is built from.
