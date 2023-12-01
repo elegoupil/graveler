@@ -58,6 +58,7 @@ golem::run_dev()
 
 ## Now Add manifest for CI/CD 
 rsconnect::writeManifest()
+## then commit and push your manifest.json to github
 ## For deployment use the app.R file at the root of your project and then use 
 # the deployment button in blue to publish the project http://rstudio.unhcr.org 
 # alternatively you can also deploy as New Content from Git Repository  directly from Posit Connect
