@@ -38,6 +38,8 @@ __{graveler} allows you to create standard, scalable and documented code so you 
 
 ## Get Started
 
+You may also review the [slideck](https://unhcrverse.github.io/unhcrverse/learn/11.Simplify_with_companionApp.html)
+
 ### Package Installation
 
 If you are on windows, you will need to install [Rtools](https://cran.r-project.org/bin/windows/Rtools/) on the top of [R](https://cran.rstudio.com/) [Rstudio](https://posit.co/download/rstudio-desktop/)
