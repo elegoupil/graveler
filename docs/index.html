@@ -8,8 +8,8 @@
 <meta name="description" content="Wrapper for {golem} that automates dashboard file generation.">
 <title>Builds standardized, modular shiny dashboard with a UNHCR style • graveler</title>
 <script src="deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="deps/bootstrap-5.2.2/bootstrap.min.css" rel="stylesheet">
-<script src="deps/bootstrap-5.2.2/bootstrap.bundle.min.js"></script><link href="deps/Lato-0.4.7/font.css" rel="stylesheet">
+<link href="deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
+<script src="deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="deps/Lato-0.4.7/font.css" rel="stylesheet">
 <link href="deps/Source_Code_Pro-0.4.7/font.css" rel="stylesheet">
 <!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
@@ -28,7 +28,7 @@
     
     <a class="navbar-brand me-2" href="index.html">graveler</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.75.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.75.2</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -45,6 +45,9 @@
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
     <a class="dropdown-item" href="articles/learn_from_examples.html">Learning from Examples</a>
   </div>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="news/index.html">Changelog</a>
 </li>
       </ul>
 <form class="form-inline my-2 my-lg-0" role="search">
@@ -251,14 +254,14 @@
    ├── .Rbuildignore
    └── NAMESPACE</code></pre>
 <p><img src="reference/figures/blank_mod.png"></p>
-<p>You place your UI and server code in the <code>mod</code> file, that reflect away repeatable data manipulation or plotting functions created through your {fusen} notebook.</p>
+<p>You place your UI and server code in the <code>mod_</code> file, that reflect away repeatable data manipulation or plotting functions created through your {fusen} notebook.</p>
 <p>In general, this helps keep your module code short and tidy, and allows you to put documentation for your functions just like a package.</p>
 </div>
 <div class="section level4">
 <h4 id="connection-between-modules-and-dashboard">Connection between modules and dashboard<a class="anchor" aria-label="anchor" href="#connection-between-modules-and-dashboard"></a>
 </h4>
-<p><code>level_up</code> might create your module, but you still need to tell your dashboard to include and run this module. To do so, there are three lines at the bottom you copy and paste into their appropriate files: body.R, app_server.R, and sidebar.R (uncommentted, of course).</p>
-<p>The body and sidebar lines need to be separated with commas if you have multiple modules, but the app_server will be individual lines like so:</p>
+<p><code>level_up</code> might create your module, but you still need to tell your dashboard to include and run this module. To do so, there are three lines at the bottom you copy and paste into their appropriate files: <code>body.R</code>, <code>app_server.R</code>, and <code>sidebar.R</code> (un commented, of course).</p>
+<p>The body and sidebar lines need to be separated with commas if you have multiple modules, but the <code>app_server</code> will be individual lines like so:</p>
 <p><img src="reference/figures/mod_copy.png"></p>
 <p>Once that is done, your modules should appear on the left. All that is left to do is to insert your actual dashboard elements.</p>
 </div>
@@ -272,7 +275,6 @@
 <div class="section level3">
 <h3 id="customization">Customization<a class="anchor" aria-label="anchor" href="#customization"></a>
 </h3>
-<p>Additional or custom libraries would be edited in the dev/01_dev.R and R/apex_libraries.R files as examples.</p>
 <p>The implementation of the brand within your plots should be done with <a href="https://vidonne.github.io/unhcrthemes/" class="external-link">unhcrthemes</a>.</p>
 </div>
 </div>
@@ -287,7 +289,7 @@
 </h3>
 <p>In order to deploy your application, the basic file have been created.</p>
 <p>Run the <code>app.R</code> file to launch your application locally and then click on the blue: “<code>publish button</code>”” in the top right. <img src="reference/figures/deploy.png"></p>
-<p>It will gather your dependencies, ensure the server has them installed, and then your dashboard will be viewable on RStudio Connect. <a href="https://data-viz.it.wisc.edu/__docs__/admin/appendix/deployment-guide/" class="external-link">More info on deployement here</a></p>
+<p>It will gather your dependencies, ensure the server has them installed, and then your dashboard will be view-able on RStudio Connect. <a href="https://data-viz.it.wisc.edu/__docs__/admin/appendix/deployment-guide/" class="external-link">More info on deployement here</a></p>
 </div>
 <div class="section level3">
 <h3 id="option-2-publish-via-github">Option 2: Publish via Github<a class="anchor" aria-label="anchor" href="#option-2-publish-via-github"></a>
@@ -297,7 +299,7 @@
 <p>Be cautious with password and token - do not upload this in github. Password and token should rather be called as envrionement variables and set up separately after deployement in rstudio Connect</p>
 </blockquote>
 <p>While more involved then simply clicking a button, git backed content will ensure your published works will align with your team’s codebase and allow others to collaborate easier. Earlier, we made a <code>manifest.json</code> file at the end of the <code>01_dev.R</code> file. This creates an “image” that RStudio looks for and reproduces from github directly.</p>
-<p>To publish for the first time, you push your code to whichever repo and branch on github, then in RStudio Connect you click its blue, publish button. You then navigate to the repo and branch you just pushed to, find the manifest file. Just like before, it will gather your dependencies from the manifest, ensure the server has them installed, and then your dashboard will be viewable on RStudio Connect.</p>
+<p>To publish for the first time, you push your code to whichever repo and branch on github, then in RStudio Connect you click its blue, publish button. You then navigate to the repo and branch you just pushed to, find the manifest file. Just like before, it will gather your dependencies from the manifest, ensure the server has them installed, and then your dashboard will be view-able on RStudio Connect.</p>
 <p>To republish changes in the future, you simply merge your code to github and the file will automatically reflect those changes when it sees them.</p>
 </div>
 <div class="section level3">
@@ -307,7 +309,7 @@
 <li><p>Beware of token and password - see above on the usage of environment variable</p></li>
 <li><p>Favor publication from github as much as possible. Build and publish your package documentation on github with <code><a href="https://pkgdown.r-lib.org/reference/build_site.html" class="external-link">pkgdown::build_site()</a></code></p></li>
 <li><p>Share publication access rights with colleagues so that there’s a back up plan to update the app if needed</p></li>
-<li><p>Once the application is published on the Posti Connect server, document the name of the github repo for your app within Rstudio Connect metadata and use a specific URL before disseminating the app</p></li>
+<li><p>Once the application is published on the Posit Connect server, document the name of the github repo for your app within Rstudio Connect metadata and use a specific URL before disseminating the app</p></li>
 <li><p>Do not hesitate to reach out to me for peer review! :)</p></li>
 </ul>
 </div>
@@ -329,7 +331,7 @@
 <div class="section level2">
 <h2 id="acknowledgement">Acknowledgement<a class="anchor" aria-label="anchor" href="#acknowledgement"></a>
 </h2>
-<p>Thanks to <a href="https://github.com/ThinkR-open/" class="external-link">ThinkR</a> for the packages on which this framework is built from.</p>
+<p>Thanks to <a href="https://github.com/alancarlson" class="external-link">Alan Carlson</a> for the initial idea on which the package is built from. Thanks to <a href="https://github.com/ThinkR-open/" class="external-link">ThinkR</a> for the packages on which this framework is built from.</p>
 </div>
 </div>
   </main><aside class="col-md-3"><div class="links">
@@ -358,7 +360,8 @@
 <div class="developers">
 <h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
-<li>Edouard Legoupil <br><small class="roles"> Maintainer </small>  </li>
+<li>Alan carlson <br><small class="roles"> Author, maintainer </small>  </li>
+<li>Edouard Legoupil <br><small class="roles"> Author, contributor </small>  </li>
 </ul>
 </div>
 
@@ -370,7 +373,7 @@
 
     <footer><div class="pkgdown-footer-left">
   <p></p>
-<p>Developed by Edouard Legoupil.</p>
+<p>Developed by Alan carlson, Edouard Legoupil.</p>
 </div>
 
 <div class="pkgdown-footer-right">
