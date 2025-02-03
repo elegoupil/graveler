@@ -148,7 +148,7 @@ graveler_dashboard <- function(path, ...) {
   writeLines(appconfig, con = file.path(paste0(path, "/R"), "app_config.R"))
   
   ## Prewrite tool header ------------
-  url <- paste0("https://rstudio.unhcr.org/", text_list$pkg_name)
+  url <- paste0("https://www.iom.int/", text_list$pkg_name)
   header <- c(
     "header <- function() {",
     "\t shinydashboard::dashboardHeader( title =  '", paste0(  text_list$title),  "') ", 
@@ -167,8 +167,7 @@ graveler_dashboard <- function(path, ...) {
   
   ## File to deploy to rstudio --------------
   appfile   <- c( "# Launch the ShinyApp (Do not remove this comment)",
-                  "# To deploy, run: rsconnect::deployApp()",
-                  "# Or use the blue button on top of this file",
+                  "# To deploy, generate a docker image",
                   "pkgload::load_all(export_all = FALSE,helpers = FALSE,attach_testthat = FALSE)",
                   "options( \"golem.app.prod\" = TRUE)",
                   paste0( text_list$pkg_name,"::run_app() # add parameters here (if any)" )

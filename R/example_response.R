@@ -13,9 +13,9 @@
 #'
 #' }
 example_response <- function() { # nocov start
-  if (!requireNamespace(package = "unhcrshiny"))
-    message("Package 'unhcrshiny' is required to run this function. \n use install.packages(\"pak\")
-\n pak::pkg_install(\"edouard-legoupil/unhcrshiny\")")
+  if (!requireNamespace(package = "iomshiny"))
+    message("Package 'iomshiny' is required to run this function. \n use install.packages(\"pak\")
+\n pak::pkg_install(\"iom/iomshiny\")")
   if (!requireNamespace(package = "shinydashboard"))
     message("Package 'shinydashboard' is required to run this function")
   shiny::shinyAppDir(system.file("examples/response", package = "graveler", mustWork = TRUE))

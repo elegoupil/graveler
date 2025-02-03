@@ -1,18 +1,18 @@
 Binding: graveler_dashboard
-Title: using UNHCR Shiny Template
+Title: using IOM Shiny Template
 OpenFiles: dev/01_dev.R
-Icon: unhcr_sprite.png
+Icon: iom_sprite.png
 
 Parameter: pkg_name
 Widget: TextInput
 Label: AppID (same as dir)
-Default: UnhcrShinyDashboard
+Default: IOMShinyDashboard
 Position: left
 
 Parameter: title
 Widget: TextInput
 Label: Short Title
-Default: UNHCR Dashboard
+Default: IOM Dashboard
 Position: right
 
 Parameter: firstname
@@ -30,12 +30,12 @@ Position: right
 Parameter: email
 Widget: TextInput
 Label: email
-Default: legoupil@unhcr.org
+Default: elegoupil@iom.int
 Position: left
 
 Parameter: githuborg
 Widget: TextInput
 Label: Github Account
-Default: unhcr-americas
+Default: iom
 Position: right
 

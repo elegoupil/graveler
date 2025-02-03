@@ -54,12 +54,13 @@ golem::run_dev()
 # attachment::att_amend_desc()
 
 ### Deploy the app ----------
-## Push to github - and then re-install your package from github
+## You need to build a docker module that can deployed on Azure Platform -
+golem::add_dockerfile_with_renv(
+  # lockfile = "renv.lock", # uncomment to use existing renv.lock file
+  output_dir = "deploy"
+)
 
-## Now Add manifest for CI/CD 
-rsconnect::writeManifest()
-## then commit and push your manifest.json to github
-## For deployment use the app.R file at the root of your project and then use 
-# the deployment button in blue to publish the project http://rstudio.unhcr.org 
-# alternatively you can also deploy as New Content from Git Repository  directly from Posit Connect
+## If SSO is required use ShinyProxy
+#golem::add_dockerfile_shinyproxy()
+## Once you have it working - send a message to  support-ict@iom.int ccing elegoupil@iom.int
 

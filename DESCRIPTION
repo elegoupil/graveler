@@ -1,14 +1,14 @@
 Package: graveler
-Title: Builds standardized, modular shiny dashboard with a UNHCR style
+Title: Builds standardized, modular shiny dashboard ready for dockerisation with IOM style
 Version: 0.75.2
 Authors@R: c(
-    person("Alan", "carlson", , "acarlson@snapfinance.com", role = c("aut", "cre")),
-    person("Edouard", "Legoupil", , "legoupil@unhcr.org", role = c("aut", "ctb"))
+    person("Edouard", "Legoupil", , "elegoupil@iom.int", role = c("aut", "cre")),
+    person("IOM", role = "cph")
   )
-Maintainer: Edouard Legoupil <legoupil@unhcr.org>
-Description: Wrapper for {golem} that automates dashboard file generation.
+Maintainer: Edouard Legoupil <elegoupil@iom.int>
+Description: Wrapper for {golem} that automates dashboard app contenerisation.
 License: MIT + file LICENSE
-URL: https://github.com/edouard-legoupil/graveler
+URL: https://github.com/iom/graveler
 Imports:
     cli,
     config,
@@ -29,9 +29,9 @@ Suggests:
 VignetteBuilder: 
     knitr
 Remotes: 
-    edouard-legoupil/unhcrshiny,
-    unhcr-dataviz/unhcrtemplate,
-    unhcr-dataviz/unhcrthemes
+    iom/iomshiny,
+    iom/iomtemplate,
+    iom/iomthemes
 Config/fusen/version: 0.5.2
 Encoding: UTF-8
 LazyData: true

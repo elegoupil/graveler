@@ -31,10 +31,10 @@ mod_home_ui <- function(id) {
 		  br(),
 		  p(tags$i( class = "fa fa-github"),
 		    "App built with ",
-		    tags$a(href="https://edouard-legoupil.github.io/graveler/",
+		    tags$a(href="https://iom.github.io/graveler/",
 		           "{graveler}" ),
 		    " -- report ",
-		    tags$a(href="https://github.com/Edouard-Legoupil/graveler/issues/new/choose",
+		    tags$a(href="https://github.com/iom/graveler/issues/new/choose",
 		           "issues here." ,
 		    ),
 		    style = "font-size: 10px")

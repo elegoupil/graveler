@@ -4,7 +4,7 @@
 * Added some preloaded github issue template
 * Added some preloaded license
 * Added some connection to git
-* Added some preloaded styling with {unhcrshiny}
+* Added some preloaded styling with {iomshiny}
 
 
 # graveler 0.75.1

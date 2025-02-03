@@ -27,7 +27,7 @@ You can see check typical examples of dashboard within the package: one for prot
 
 As a _rule of thumb_, a good dashboard should remain simple to be effective (aka not more than 7 charts, and not more than 7 categories by charts). 
 
-To help in the design process, the package includes examples of typical charts that can be assembled together both for Response and Protection Monitoring. The file structure is located in the [examples folder](https://github.com/Edouard-Legoupil/graveler/tree/main/inst/examples).
+To help in the design process, the package includes examples of typical charts that can be assembled together both for Response and Protection Monitoring. The file structure is located in the [examples folder](https://github.com/iom/graveler/tree/main/inst/examples).
 
 ##### Example 1: Protection Monitoring
 
@@ -80,7 +80,3 @@ graveler::example_response()
 <img src="man/figures/empty.png" width="551"/>
 
 
-
-## ... Register your dashboard!
-
-On UNHCR Data Portal: [https://data.unhcr.org/en/dataviz](https://data.unhcr.org/en/dataviz)

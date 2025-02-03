@@ -4,13 +4,13 @@
 #'
 #' @import shiny
 #' @import shinydashboard
-#' @importFrom unhcrshiny theme_shinydashboard_unhcr
+#' @importFrom iomshiny theme_shinydashboard_iom
 #' @noRd
 #' @keywords internal
 
 body <- function() {
   shinydashboard::dashboardBody(
-    unhcrshiny::theme_shinydashboard_unhcr(),
+    iomshiny::theme_shinydashboard_iom(),
     golem::activate_js(),
     tags$head(
       tags$script(src = "custom.js")

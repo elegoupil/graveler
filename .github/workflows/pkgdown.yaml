@@ -30,8 +30,8 @@ jobs:
           extra-packages: any::pkgdown, local::.
           needs: website
 
-      - name: Install unhcrtemplate
-        run: install.packages("remotes");remotes::install_github("vidonne/unhcrtemplate")
+      - name: Install iomtemplate
+        run: install.packages("remotes");remotes::install_github("iom/iomtemplate")
         shell: Rscript {0}
 
       - name: Build site
